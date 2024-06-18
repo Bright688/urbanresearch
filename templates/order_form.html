@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Order Form</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div id="price-display"></div>
+    <button type="submit">Submit</button>
+</form>
+<script type="text/javascript">
+    function updatePrice() {
+        var serviceSelect = document.getElementById('id_service');
+        var priceDisplay = document.getElementById('price-display');
+        var selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+        var price = selectedOption.getAttribute('data-price');
+        priceDisplay.innerText = "Price: $" + price;
+    }
+    window.onload = function() {
+        updatePrice();
+    };
+
+    var serviceSelect = document.getElementById('id_service');
+    {% for service in services %}
+        var option = new Option("{{ service.name }}", "{{ service.id }}", false, false);
+        option.setAttribute('data-price', "{{ service.price }}");
+        serviceSelect.options[serviceSelect.options.length] = option;
+    {% endfor %}
+    serviceSelect.onchange = updatePrice;
+</script>
+{% endblock %}

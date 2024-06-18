@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Urban Research</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <div class="container-fluid p-0 fixed-top">
+        <div class="navtop">
+            <div class="text-white navinfo" style="position: relative; font-size:16px;">
+                <i class='fa fa-phone fa-solid mr-3'><span>09145647420</span></i>
+                <i class="fa fa-envelope" aria-hidden="true"><span>urbanresearch@gmail.com</span></i>
+            </div>
+            
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-cus pt-3 pb-3">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <div class="brand-container">
+                    <svg width="150" height="50" viewBox="0 0 300 300">
+                        <defs>
+                            <path id="curve" d="M 50 150 A 100 100 0 1 1 250 150" />
+                            <path id="curve2" d="M 250 150 A 100 100 0 1 1 50 150" />
+                        </defs>
+                        <text width="500"> <!-- Adjust the font-size value as needed -->
+                            <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
+                                URBAN RESEARCH
+                            </textPath>
+                        </text>
+                        <image href="{% static 'logo/logobg.png' %}" x="-40" y="-30" height="380px" width="380px"/>
+                        <text width="500"> <!-- Adjust the font-size value as needed -->
+                            <textPath xlink:href="#curve2" startOffset="50%" text-anchor="middle">
+                                YOU'RE IN GOOD HANDS
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right collapsed bg-custom rounded-circle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon px-2 py-3 "></span>
+                <span class="close px-2 py-1 text-white">X</span>
+            </button>
+            <div class="collapse navbar-collapse navbar-bottom" id="navbarNav">
+                <ul class="navbar-nav mx-auto justify-content-lg-center justify-content-md-start">
+                    <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                        <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item dropdown services {% if request.path == '/services/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'services' %}" id="servicesDropdown" role="button" aria-haspopup="false" aria-expanded="false">
+                            Services <i class="fas fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <div class="dropdown-menu mt-0 border-top-0" aria-labelledby="servicesDropdown">
+                            <div class="row dropdownrow">
+                                <div class="col-md-6">
+                                    <h2 class="dropdown-header">Project Types We Cover</h2>
+                                    <a class="dropdown-item" href="#">Essay</a>
+                                    <a class="dropdown-item" href="#">Admissions Essay</a>
+                                    <a class="dropdown-item" href="#">PowerPoint Presentation</a>
+                                    <a class="dropdown-item" href="#">Research Paper</a>
+                                    <a class="dropdown-item" href="#">Assignment</a>
+                                    <a class="dropdown-item" href="#">Speech</a>
+                                    <a class="dropdown-item" href="#">Book Reviews</a>
+                                    <a class="dropdown-item" href="#">Coursework</a>
+                                    <a class="dropdown-item" href="#">Personal Statement</a>
+                                    <a class="dropdown-item" href="#">Dissertation</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <h2 class="dropdown-header">Academic Fields & Subjects</h2>
+                                    <a class="dropdown-item" href="#">Psychology</a>
+                                    <a class="dropdown-item" href="#">Literature</a>
+                                    <a class="dropdown-item" href="#">Sociology</a>
+                                    <a class="dropdown-item" href="#">Math</a>
+                                    <a class="dropdown-item" href="#">Statistics</a>
+                                    <a class="dropdown-item" href="#">Physics</a>
+                                    <a class="dropdown-item" href="#">English</a>
+                                    <a class="dropdown-item" href="#">Spanish</a>
+                                    <a class="dropdown-item" href="#">Accounting</a>
+                                    <a class="dropdown-item" href="#">Economics</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item {% if request.path == '/pricing/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/blog/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                    </li>
+                </ul>
+                <a class="btn btn-custom btn-lg ml-auto" href="{% url 'order_form' %}">Place an Order</a>
+            </div>
+        </nav>
+    </div
+    <div class="container-fluid p-0">
+        {% block content %}
+        {% endblock %}
+    </div>
+  
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src = "{%static '/js/app.js'%}" </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/26ad0de32b.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+
+    
+      
+</body>
+</html>

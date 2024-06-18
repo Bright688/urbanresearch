@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="banner" style="position: relative">
+    <img src="{{ MEDIA_URL }}media/images/banner4.png" class="img-fluid" alt="Banner">
+</div>
+<div class="container banner-content">
+    <div class="container banner-content">
+        <div class="row align-items-center">
+            <div class="col-md-8 banner-text">
+                <!-- Banner text or other content here -->
+                <h1>Welcome to Urban Research</h1>
+                <h2>Student's #1 Choice for Assignment Help.</h2>
+                <p>Urban Research, the ultimate choice for UK students seeking assignment help. Our expert writers handle your papers with care and precision.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-calculator">
+                    <h3>Calculate Your Price</h3>
+                    <form id="pricingForm">
+                        <div class="form-group">
+                            <label for="serviceType">Service Type</label>
+                            <select class="form-control" id="serviceType" required>
+                                <option value="Essay">Essay</option>
+                                <option value="Admissions Essay">Admissions Essay</option>
+                                <option value="PowerPoint Presentation">PowerPoint Presentation</option>
+                                <option value="Research Paper">Research Paper</option>
+                                <option value="Assignment">Assignment</option>
+                                <option value="Speech">Speech</option>
+                                <option value="Book Reviews">Book Reviews</option>
+                                <option value="Coursework">Coursework</option>
+                                <option value="Personal Statement">Personal Statement</option>
+                                <option value="Dissertation">Dissertation</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Literature">Literature</option>
+                                <option value="Sociology">Sociology</option>
+                                <option value="Math">Math</option>
+                                <option value="Statistics">Statistics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="English">English</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Economics">Economics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="numPages">Number of Pages</label>
+                            <select class="form-control" id="numPages" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="deadline">Deadline (days)</label>
+                            <select class="form-control" id="deadline" required>
+                                <option value="10">10 days</option>
+                                <option value="9">9 days</option>
+                                <option value="8">8 days</option>
+                                <option value="7">7 days</option>
+                                <option value="6">6 days</option>
+                                <option value="5">5 days</option>
+                                <option value="4">4 days</option>
+                                <option value="3">3 days</option>
+                                <option value="2">2 days</option>
+                                <option value="1">1 day</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="totalPrice">Total Price</label>
+                            <input type="text" class="form-control" id="totalPrice" readonly>
+                           <div class="text-center"> 
+                               <a class="btn btn-lg ml-auto btn-custom2" href="{% url 'order_form' %}">Order Now</a>
+                           </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section1">
+    <div class="section-heading">
+        <h1>Who We Are</h1>
+        <div class="fancy-lines">
+            <div class="line"></div>
+            <div class="round"></div>
+            <div class="round"></div>
+            <div class="line"></div>
+        </div>
+        <h3>WE ARE ONLINE WRITING SERVICE PROVIDERS</h3>
+    </div>
+   <div class="section1-text">
+      <p>We are a team of professional and expert writers. We provide writing services in different academic and general studies. We help students of every level in assignment writing, dissertation writing, report writing, essay writing, and variety of other customised writings.</p>
+    </div> 
+</div>
+<!--Features section-->
+<div class="features-section" id="featuresSection">
+    <div class="feature">
+        <img src="{{ MEDIA_URL }}media/images/affordable.png" alt="Affordable price">
+        <h3>Affordable price</h3>
+        <p>Our prices are set to be affordable and reasonable with no hidden charges. Installment plans are also available for the students.</p>
+    </div>
+    <div class="feature">
+        <img src="{{ MEDIA_URL }}media/images/ontime.png" alt="On time delivery">
+        <h3>On time delivery</h3>
+        <p>TAT (Turn Around Time) is our strength. We deliver the work upon commitment. We also work with short deadlines.</p>
+    </div>
+    <div class="feature">
+        <img src="{{ MEDIA_URL }}media/images/expert.png" alt="Expert writers">
+        <h3>Expert writers</h3>
+        <p>Our writers not only hold highly qualified degrees but also have expertise in their research field.</p>
+    </div>
+    <div class="feature">
+        <img src="{{ MEDIA_URL }}media/images/revisions.png" alt="Unlimited revisions">
+        <h3>Unlimited revisions</h3>
+        <p>Your satisfaction is our priority so we are providing unlimited revisions free of cost. We will revise and edit the work until your satisfaction.</p>
+    </div>
+    <div class="feature">
+        <img src="{{ MEDIA_URL }}media/images/secure.png" alt="Secure dealing">
+        <h3>Secure dealing</h3>
+        <p>Keeping client information secure is our responsibility. We do not disclose any kind of client’s credentials or delivered work with anyone else.</p>
+    </div>
+</div>
+<div class="section2">
+    <div class="row chooseUs">
+        <div class="col-md-6">
+            <h2>Why Choose Us?</h2>
+            <div class="chooseUs-text mx-5 pt-3">
+                 <p style="font-size: 16px">Urban Research is a leading writing service provider in the United Kingdom. We have gained a competitive advantage over other writing service providers.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-4">
+                   <div class="chooseus-image1">
+                    <img src="{{ MEDIA_URL }}media/images/question.png" alt="24/7" style="width:70px; background-color: white; border-radius: 45px;">
+                   </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-8 text-justify">
+                    <h4>24/7 Support</h4>
+                    <p style="margin-right: 50px !important; font-size: 16px;">We are live 24/7 to assist our clients over live chat, phone call and emails. If you need any kind of help, please feel free to contact us.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <div class="chooseus-image2">
+                        <img src="{{ MEDIA_URL }}media/images/document.png" alt="24/7" style="width:70px; background-color: white; border-radius: 45px;">
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-8 text-justify">
+                    <h4>Plagiarism & AI free work</h4>
+                    <p style="margin-right: 50px !important; font-size: 16px;">We are liable to provide unique and original work to our clients; it is our priority to provide plagiarism & AI free work. As an evidence we give turnitin report (plagiarism report) with complete work to avoid plagiarism and AI content issue.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <div class="chooseus-image3">
+                        <img src="{{ MEDIA_URL }}media/images/update.png" alt="24/7" style="width:70px; background-color: white; border-radius: 45px;">
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-8 text-justify">
+                    <h4>Unlimited Revisions</h4>
+                    <p style="margin-right: 50px !important; font-size: 16px">We are liable to provide unique and original work to our clients; it is our priority to provide plagiarism & AI free work. As an evidence we give turnitin report (plagiarism report) with complete work to avoid plagiarism and AI content issue.</p>
+                </div>
+            </div>
+           
+        </div>
+        <div class="col-md-6" style=" background-color: rgba(35, 37, 35, 1) !important; color: white; position:relative">
+            <div class="free-feature">
+                <h3>Additional Free Features</h3>
+                <div class="container px-4">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <p>Unlimited Revisions</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <strike>£ 10.81</strike>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <p class="mx-5">FREE</p>
+                        </div>
+                    </div>
+                    <hr class="bg-danger border-2 border-top border-light" />
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <p>Formatting</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <strike>£ 8.51</strike>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <p class="mx-5">FREE</p>
+                        </div>
+                    </div>
+                    <hr class="bg-danger border-2 border-top border-light" />
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <p>Plagiarism Report</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <strike>£ 5</strike>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <p class="mx-5">FREE</p>
+                        </div>
+                    </div>
+                    <hr class="bg-danger border-2 border-top border-light" />
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <p>Reference list / Bibliography</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <strike>£ 5.51</strike>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <p class="mx-5">FREE</p>
+                        </div>
+                    </div>
+                    <hr class="bg-danger border-2 border-top border-light" />
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <p>You will Save</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <strike>£ 29.83</strike>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-3">
+                            <p class="mx-5">FREE</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top:20px">Get these additional features <span class="text-primary" style="font-weight:bold;">FREE OF COST</span> For every order</p>
+                <div class="text-center p-3">
+                  <a class="btn btn-custom3 btn-lg ml-auto" href="{% url 'order_form' %}">Proceed to Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section3 mt-5">
+    <div class="section-heading">
+        <h1>What We DO</h1>
+        <div class="fancy-lines">
+            <div class="line"></div>
+            <div class="round"></div>
+            <div class="round"></div>
+            <div class="line"></div>
+        </div>      
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">Academic Writing</h3>
+                  <p class="card-text">Our academic writing services are designed to help students achieve academic success. We provide expert assistance in crafting well-researched and thoughtfully written essays, research papers, and book reviews.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">Application & Admission Documents</h3>
+                  <p class="card-text">Stand out in your college or job applications with compelling personal statements and admissions essays that highlight your strengths and experiences. We also assist with other application-related assignments.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Presentation & Coursework</h3>
+                  <p class="card-text">We assist with creating engaging and professional presentations, such as PowerPoint presentations and speeches, as well as providing support with various coursework assignments to help you excel in your academic endeavors.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row mt-4">
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">Humanities & Social Sciences Projects</h3>
+                  <p class="card-text">Explore the depth of human experiences and societal structures with our assistance in humanities and social sciences projects, including psychology, literature, and sociology.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">STEM Projects</h3>
+                  <p class="card-text">Tackle complex scientific, mathematical, and technological challenges with our expert support in STEM projects, encompassing subjects such as math, statistics, and physics.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">Language & Business Studies</h3>
+                  <p class="card-text">Enhance your proficiency in languages and business disciplines with our comprehensive support in English, Spanish, accounting, and economics studies.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="section4 mt-5">
+    <div class="section-heading">
+        <h1>Who Are the Experts</h1>
+        <div class="fancy-lines">
+            <div class="line"></div>
+            <div class="round"></div>
+            <div class="round"></div>
+            <div class="line"></div>
+        </div>      
+    </div>
+    
+    <div class="container-expert mt-4">
+      <p class="text-center mb-4">We are dedicated to providing top-quality service through our team of highly skilled experts. Each member of our team is handpicked for their exceptional knowledge and expertise in their respective fields</p>
+   
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel" id="expert-carousel">
+            <!-- JavaScript will dynamically insert slides here -->
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button" id="prev-btn">&#10094;</button>
+            <button class="carousel-button" id="next-btn">&#10095;</button>
+        </div>
+    </div>
+
+</div> 
+<div class="section5">
+    <div class="container"></div>
+</div>          
+  
+{% endblock %}

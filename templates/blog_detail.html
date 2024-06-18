@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <article class="mt-5">
+        <h1 class="article-title">{{ blog.title }}</h1>
+        <p class="article-meta"><strong>By {{ blog.author }}</strong> | {{ blog.created_at }}</p>
+        {% if blog.image %}
+        <img src="{{ blog.image.url }}" class="img-fluid article-image" alt="{{ blog.title }}">
+        {% endif %}
+        <div class="article-content">
+            <p>{{ blog.content }}</p>
+        </div>
+    </article>
+
+    <section class="comment-section">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+        <div class="comment">
+            <p class="comment-meta"><strong>{{ comment.name }}</strong> | {{ comment.created_at }}</p>
+            <p class="comment-body">{{ comment.body }}</p>
+        </div>
+        {% empty %}
+        <p>No comments yet.</p>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Rate this post</h2>
+        <form action="{% url 'upvote_blog' blog.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success" {% if has_voted %}disabled{% endif %}>
+                Upvote ({{ blog.upvotes }})
+            </button>
+        </form>
+        <form action="{% url 'downvote_blog' blog.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" {% if has_voted %}disabled{% endif %}>
+                Downvote ({{ blog.downvotes }})
+            </button>
+        </form>
+        <button type="button" class="btn btn-primary" onclick="showCommentForm()">Comment</button>
+    </section>
+
+    <section id="comment-section" style="display: none;">
+        <h2>Add a comment</h2>
+        {% if new_comment %}
+        <p>Your comment has been added.</p>
+        {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% endif %}
+    </section>
+</div>
+
+<script type="text/javascript">
+    function showCommentForm() {
+        var commentSection = document.getElementById('comment-section');
+        commentSection.style.display = 'block';
+    }
+</script>
+{% endblock %}
