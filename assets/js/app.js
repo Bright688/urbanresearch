@@ -192,4 +192,67 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Start auto sliding
             resetAutoSlide();
+ });
+
+ //statistics
+ $(document).ready(function() {
+    // Init ScrollMagic controller
+    var controller = new ScrollMagic.Controller();
+
+    // Loop through each statistic
+    $('.statistic').each(function() {
+        var tween = gsap.fromTo(this, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.5 });
+
+        // Create a scene for each statistic
+        new ScrollMagic.Scene({
+            triggerElement: this,
+            triggerHook: 0.8,  // Adjust as needed
+            reverse: false
+        })
+        .setTween(tween)
+        .addTo(controller);
+    });
+
+    // Function to animate numbers
+    function animateNumbers(targetElement, startValue, endValue, duration) {
+        $({value: startValue}).animate({value: endValue}, {
+            duration: duration,
+            easing: 'swing',
+            step: function() {
+                $(targetElement).text(Math.ceil(this.value));
+            }
         });
+    }
+
+    // Call the function to animate numbers on page load
+    animateNumbers('#order-completed', 0, 21694, 3000); // 3 seconds duration
+    animateNumbers('#happy-clients', 0, 18606, 2500);   // 2.5 seconds duration
+    animateNumbers('#returning-ratio', 0, 92, 2000);    // 2 seconds duration
+}); 
+
+$$(document).ready(function(){
+    $('.testimonial-carousel').slick({
+        autoplay: true,
+        autoplaySpeed: 5000,
+        dots: true,
+        arrows: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+});
