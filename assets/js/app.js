@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const arrowIcon = servicesDropdown.querySelector('.arrow-icon');
     const dropdownMenu = document.querySelector('.dropdown-menu');
 
-    servicesDropdown.addEventListener('click', function(event) {
+    servicesDropdown.addEventListener('mouseover', function(event) {
         event.preventDefault();
         dropdownMenu.classList.toggle('show');
         arrowIcon.classList.toggle('rotate');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (dropdownMenu.classList.contains('show')) {
               
                 servicesDropdown.style.fontWeight = '900';
-                servicesDropdown.style.backgroundColor = 'rgb(200, 218, 217, 0.5)';
+                servicesDropdown.style.backgroundColor = 'rgb(200, 218, 217, 0.3)';
                 servicesDropdown.style.color = 'black';
 
             } else {

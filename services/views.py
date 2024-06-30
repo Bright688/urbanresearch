@@ -21,6 +21,12 @@ def pricing(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def guarantee(request):
+    return render(request, 'guarantee.html')
+
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
    
 def service_details(request, service_id):
    service = Service.objects.get(id=service_id)

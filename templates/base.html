@@ -19,8 +19,8 @@
     <div class="container-fluid p-0 fixed-top">
         <div class="navtop">
             <div class="text-white navinfo" style="position: relative; font-size:16px;">
-                <i class='fa fa-phone fa-solid mr-3'><span>09145647420</span></i>
-                <i class="fa fa-envelope" aria-hidden="true"><span>urbanresearch@gmail.com</span></i>
+                <i class='fa fa-phone fa-solid mr-2'></i><span>09145647420</span>
+                <i class="fa fa-envelope mr-2"></i><span>urbanresearch@gmail.com</span>
             </div>
             
         </div>
@@ -64,32 +64,15 @@
                         </a>
                         <div class="dropdown-menu mt-0 border-top-0" aria-labelledby="servicesDropdown">
                             <div class="row dropdownrow">
-                                <div class="col-md-6">
-                                    <h2 class="dropdown-header">Project Types We Cover</h2>
-                                    <a class="dropdown-item" href="#">Essay</a>
-                                    <a class="dropdown-item" href="#">Admissions Essay</a>
-                                    <a class="dropdown-item" href="#">PowerPoint Presentation</a>
-                                    <a class="dropdown-item" href="#">Research Paper</a>
-                                    <a class="dropdown-item" href="#">Assignment</a>
-                                    <a class="dropdown-item" href="#">Speech</a>
-                                    <a class="dropdown-item" href="#">Book Reviews</a>
-                                    <a class="dropdown-item" href="#">Coursework</a>
-                                    <a class="dropdown-item" href="#">Personal Statement</a>
-                                    <a class="dropdown-item" href="#">Dissertation</a>
+                                <div class="col-md-12">
+                                    <a class="dropdown-item" href="#">Assignment Assistance</a>
+                                    <a class="dropdown-item" href="#">Personalized Writing Solutions</a>
+                                    <a class="dropdown-item" href="#">Thesis and Dissertation Support</a>
+                                    <a class="dropdown-item" href="#">Academic Coursework Assistance</a>
+                                    <a class="dropdown-item" href="#">Professional Report Compilation</a>
+                                    <a class="dropdown-item" href="#">Academic Essay Assistance:</a>
                                 </div>
-                                <div class="col-md-6">
-                                    <h2 class="dropdown-header">Academic Fields & Subjects</h2>
-                                    <a class="dropdown-item" href="#">Psychology</a>
-                                    <a class="dropdown-item" href="#">Literature</a>
-                                    <a class="dropdown-item" href="#">Sociology</a>
-                                    <a class="dropdown-item" href="#">Math</a>
-                                    <a class="dropdown-item" href="#">Statistics</a>
-                                    <a class="dropdown-item" href="#">Physics</a>
-                                    <a class="dropdown-item" href="#">English</a>
-                                    <a class="dropdown-item" href="#">Spanish</a>
-                                    <a class="dropdown-item" href="#">Accounting</a>
-                                    <a class="dropdown-item" href="#">Economics</a>
-                                </div>
+                               
                             </div>
                         </div>
                     </li>
@@ -111,10 +94,45 @@
         {% block content %}
         {% endblock %}
     </div>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="{% url 'home' %}">> Home</a></li>
+                    <li><a href="{% url 'services' %}">> Services</a></li>
+                    <li><a href="{% url 'pricing' %}">> Pricing</a></li>
+                    <li><a href="{% url 'guarantee' %}">> Guarantee</a></li>
+                    <li><a href="{% url 'privacy_policy' %}">> Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Information</h3>
+                <p><i class="fa fa-phone"></i> <a href="tel:+447516662312">+44 7516 662317</a></p>
+                <p><i class="fa fa-envelope"></i> <a href="mailto:urban@research.co.uk">urbanresearch.co.uk</a></p>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="footer-social">
+                    <a href="#"><image src="{% static 'icons/facebook.png' %}" height="40px" width="40px"/></a>
+                    <a href="#"><image src="{% static 'icons/instagram.png' %}" height="40px" width="40px"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyrights 2024 urbanresearch.co.uk. All Rights Reserved</p>
+            <p class="disclaimer">Disclaimer: urban research' sole purpose is to help students in the academic career. Hence, all the papers produced by urban research are for reference purposes only and are not supposed to be submitted in any institute.</p>
+        </div>
+    </footer>
   
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src = "{%static '/js/app.js'%}" </script>
+    <script src = "{%static '/js/app.js'%}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/26ad0de32b.js" crossorigin="anonymous"></script>
