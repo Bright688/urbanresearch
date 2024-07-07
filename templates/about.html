@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 <div class="aboutus-banner">
     <img src="{{ MEDIA_URL }}/media/images/about-us.png" class="img-fluid aboutus-banner" alt="Banner" style="position: relative">
     <div class="aboutus-banner-content" style="position:absolute">
@@ -56,7 +57,7 @@
         their academic goals.</p>
 </div>
 <div class="section-heading mt-5">
-    <h1>Who We Do</h1>
+    <h1>What We Do</h1>
     <div class="fancy-lines">
         <div class="line"></div>
         <div class="round"></div>
@@ -150,6 +151,101 @@
         <div class="round"></div>
         <div class="round"></div>
         <div class="line"></div>
+    </div>
+</div>
+
+<div class="aboutus-container mx-auto mt-2">
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6 pb-3">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/ceo.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Alex Brown</p>
+                    <p>CEO</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/senior_researcher.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Davies Walker</p>
+                    <p>Senior Researcher</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/research_assistant.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Stella Tina</p>
+                    <p>Research Assistant</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/lead_writer.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Henry Austin</p>
+                    <p>Lead Writer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6 pb-3">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/senior_editor.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Michael Brown</p>
+                    <p>Senior Editor</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/customer_support.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Alice Taylor</p>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/data_analyst.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Daniel Ogana</p>
+                    <p>Data Analyst</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="card text-center team-card">
+                <div class="team">
+                    <img src="{% static '/expert/quality_assurance.png' %}" height="170px" width="170px"/>
+                </div>
+                <div class="team-text">
+                    <p>Queen Austin</p>
+                    <p>Quality Assurance</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
  {% endblock %}

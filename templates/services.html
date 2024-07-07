@@ -1,6 +1,148 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Services</h1>
-<p>How to get in touch with us.</p>
+<div class="services-banner">
+    <div class="row mx-0">
+        <div class="col-md-6 col-sm-12 col-xs-12 col-12">
+            <p>Your <span style="  background-color: #1fa59e; border-radius: 10px;">One-Click Hub</span><br> for Every Assignment,<br> Any Subject</p>
+            <p class="mx-5">Get expert research assistance with just one click! Whatever the subject or project, we make it easy and straightforward to receive professional help.</p>
+        </div>
+        <div class="col-md-6 d-none d-md-block">
+            <img src="{{ MEDIA_URL }}/media/images/service_banner.png" class="img-fluid aboutus-banner" alt="Banner">
+        </div>
+    </div>
+</div>
+
+<div class="service_container mt-5 mx-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <a href="#">
+                        <div class="card">
+                            <h3>Assignment Assistance</h3>
+                            <p class="mx-5">Handling a variety of assignments with short deadlines is our daily practice. If you find yourself stuck in an urgent situation, we can help. Contact us for high-quality work delivered quickly and reliably.</p>
+                         </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#">
+                        <div class="card">
+                            <h3>Personalized writing<br> solutions</h3>
+                            <p class="mx-5">Our personalized writing solutions cater to your specific needs. Whether it's an essay, report, or research paper, we tailor our services to your preferences. Contact us for high-quality, customized content every time.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6 mb-3">
+                    <a href="#">
+                        <div class="card">
+                            <h3>Thesis and Dissertation<br> Support</h3>
+                            <p class="mx-5">Our thesis and dissertation support services assist you at every research stage. We provide expert guidance from proposal development to final submission. Contact us for reliable help and achieve success in your academic journey.</p>
+                         </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#">
+                        <div class="card">
+                            <h3>Academic Coursework<br> Assistance</h3>
+                            <p class="mx-5">Our academic coursework assistance covers all subjects and assignment types. We provide expert support to help you excel in your studies. Contact us for timely, high-quality work tailored to your needs.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6 mb-3">
+                    <a href="#">
+                        <div class="card">
+                            <h3>Professional Report<br> Compilation</h3>
+                            <p class="mx-5">Our professional report compilation service ensures meticulous attention to detail and clarity in presenting findings. We specialize in compiling comprehensive reports across various fields while adhering to industry standards.</p>
+                         </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#">
+                        <div class="card">
+                            <h3>Academic Essay<br> Assistance</h3>
+                            <p class="mx-5">Our academic essay assistance service provides expert guidance and support to help you craft well-researched and compelling essays. We specialize in assisting students across various subjects, ensuring high-quality and tailored academic content.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="pricing-calculator" style=" background-color: rgba(15,57,55, 1.0) !important;">
+                <h3>Calculate Your Price</h3>
+                <form id="pricingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Service Type</label>
+                        <select class="form-control" id="serviceType" required>
+                            <option value="Essay">Essay</option>
+                            <option value="Admissions Essay">Admissions Essay</option>
+                            <option value="PowerPoint Presentation">PowerPoint Presentation</option>
+                            <option value="Research Paper">Research Paper</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Speech">Speech</option>
+                            <option value="Book Reviews">Book Reviews</option>
+                            <option value="Coursework">Coursework</option>
+                            <option value="Personal Statement">Personal Statement</option>
+                            <option value="Dissertation">Dissertation</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Literature">Literature</option>
+                            <option value="Sociology">Sociology</option>
+                            <option value="Math">Math</option>
+                            <option value="Statistics">Statistics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Economics">Economics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="numPages">Number of Pages</label>
+                        <select class="form-control" id="numPages" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Deadline (days)</label>
+                        <select class="form-control" id="deadline" required>
+                            <option value="10">10 days</option>
+                            <option value="9">9 days</option>
+                            <option value="8">8 days</option>
+                            <option value="7">7 days</option>
+                            <option value="6">6 days</option>
+                            <option value="5">5 days</option>
+                            <option value="4">4 days</option>
+                            <option value="3">3 days</option>
+                            <option value="2">2 days</option>
+                            <option value="1">1 day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Price</label>
+                        <input type="text" class="form-control" id="totalPrice" readonly>
+                       <div class="text-center"> 
+                           <a class="btn btn-lg ml-auto btn-custom2" href="{% url 'order_form' %}">Proceed to Order</a>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -548,7 +548,7 @@ box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
     align-items: center;
     background-color: rgba(226, 236, 236, 0.5);
 }
-.card img {
+.slide>.card img {
     border-radius: 50%;
     width: 100px;
     height: 100px !important;
@@ -923,6 +923,151 @@ footer {
 .aboutus-section ul{
     list-style-type: none;
 }
+
+
+.aboutus-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    flex-direction: column; /* Ensure children are stacked vertically */
+    align-items: center; /* Center align the items */
+}
+
+
+
+.team img{
+    border-radius: 15px;
+}
+
+.team{
+    padding-top:20px;
+}
+
+.aboutus-container .card{
+    width: 200px;
+    height:280px !important;
+    border-radius: 15px;
+}
+
+.team-text{
+    padding-top: 15px;
+}
+
+.team-text p{
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.team-text p:nth-of-type(1){
+    font-weight: 600;
+}
+
+.team-text p:nth-of-type(2){
+    font-weight: 600;
+    color: gray;
+}
+
+.services-banner{
+    background-color: rgb(204, 200, 200);
+}
+
+.services-banner img{
+    height:500px !important;
+    width: 100%;
+    left:40%;
+}
+
+.services-banner p:nth-of-type(1){
+    font-size: 45px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    margin-left: 50px;
+    margin-top: 150px;
+}
+
+.services-banner p:nth-of-type(2){
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    text-align: justify;
+}
+
+.services-banner span{
+    color: white;
+}
+
+.service_container{
+    margin-bottom: 100px;
+}
+
+.service_container .card{
+    height:300px !important;
+}
+
+.service_container a{
+    text-decoration: none !important;
+    color: black;
+}
+
+.service_container .card{
+    position: relative;
+    border: 0.5px solid #cacaca;
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+.service_container .card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+    transform: scaleY(0);
+    z-index: 0;
+}
+
+.service_container h3{
+    font-size: 22px !important;
+    font-weight: 600;
+    margin-top: 45px;
+}
+
+.service_container p{
+    font-size: 14px;
+    text-align: justify;
+    margin-top: 10px;
+    line-height: 1.5em;
+    font-weight: 400;
+}
+
+.service_container .card{
+    text-align: center;
+
+}
+
+.service_container .card:hover::before{
+    background-color: #1fa59e !important;
+    transform: scaleY(1);
+}
+
+.service_container .card:hover{
+    color: white !important;
+}
+
+.service_container h3, p {
+    font-size: 25px;
+    z-index: 1; /* Ensure text is above the pseudo-element */
+    position: relative; /* Ensure z-index works correctly */
+    transition: color 0.4s ease; /* Transition for the text color */
+}
+
+.service_container .card:hover h3 {
+    color: white;
+}
+
+
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
 /* Centering navbar items on large devices */
@@ -989,6 +1134,23 @@ footer {
         line-height: 1.8;
     }
 
+    .aboutus-container .card{
+        width: 200px;
+        height:180px !important;
+    }
+
+    .services-banner p:nth-of-type(1){
+        font-size: 35px !important;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .services-banner p:nth-of-type(2){
+        font-size: 17px;
+        text-align: center;
+        line-height: 1.7em;
+    }
+
 }
 
 
@@ -1007,6 +1169,8 @@ footer {
     }
     
 }
+
+
 
 
 /* Adjust navbar items alignment for small and medium devices */
@@ -1119,9 +1283,15 @@ footer {
         margin-right: 50px;
     }
 
-    .aboutus-section1 p{
+    .aboutus-section p{
         margin-right: 50px;
         margin-left:50px;
+    }
+
+
+    
+    .service_container .col-md-4{
+        margin-top:10px;
     }
 }
 
