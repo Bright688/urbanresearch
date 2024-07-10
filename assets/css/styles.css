@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: rgb(255, 255, 255);
 }
+
 .navtop{
     background-color: rgba(0, 0, 0, 0.5);
     position: relative;
@@ -9,7 +10,7 @@ body {
 }
 
 .bg-cus{
-    background-color: rgba(35, 37, 35, 0.5);
+    background-color: rgba(35, 37, 35, 0.7);
 }
 
 .navtop::before{
@@ -70,8 +71,8 @@ body {
     left: 10%; /* Adjust this value as needed */
     transform: translateX(-30%);
     z-index: 10;
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
     background-color: rgba(15,57,55, 0.1); /* Adjust background color and opacity as needed */
     border-radius: 50%; /* Make it circular */
     display: flex;
@@ -84,7 +85,7 @@ body {
 .navbar-brand svg {
     overflow: visible;
     width: 300px; /* Adjust the width as needed */
-    height: 110px; /* Adjust the height as needed */
+    height: 90px; /* Adjust the height as needed */
 
 }
 
@@ -1131,11 +1132,14 @@ footer {
         margin-left: auto;
         margin-right: auto;
     }
-
+    
+    
 }
 
+
+
 /*for medium devces*/
-@media (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 992px) {
     .section3 .card-title{
         font-size: 15px;
         margin-top: 5px;
@@ -1154,6 +1158,42 @@ footer {
         margin-left: 150px;
         margin-right: 150px;
     }
+
+    .navbar-brand svg {
+        width: 300px; /* Adjust the width as needed */
+        height: 80px; /* Adjust the height as needed */
+    
+    }
+
+    .brand-container {
+        top: -10px; /* Adjust this value as needed */
+        left: 4.7%; /* Adjust this value as needed */
+        height: 70px;
+        width: 70px;
+    }
+
+    .services-banner p:nth-of-type(1){
+        font-size: 30px;
+        font-weight: 700;
+        margin-left: 30px;
+    }
+    
+    .services-banner p:nth-of-type(2){
+        font-size: 16px;
+        margin-left: 30px !important;
+    }
+
+    .aboutus-section p{
+        margin-right: 100px !important;
+        margin-left:100px !important;
+        font-size:16px;
+    }
+
+    .aboutus-image{
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
 
 }
 
@@ -1222,11 +1262,14 @@ footer {
     .assignment_help img{
        width: 437px !important;
     }
+
+
+    
 }
 
 
 /* Adjust navbar brand alignment for small and medium devices */
-@media (max-width: 991px) {
+@media (max-width: 991px){
     .navbar-brand {
         margin-left: 0;
     }
@@ -1350,8 +1393,8 @@ footer {
     }
 
     .aboutus-image{
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: -29px;
+        margin-right: -29px;
     }
 
     .aboutus-section p{
@@ -1364,14 +1407,34 @@ footer {
     .service_container .col-md-4{
         margin-top:10px;
     }
-}
 
-
-/* Centering navbar items on large devices */
-@media (min-width: 992px) {
-    .navbar-nav {
-        margin-left: auto;
-        margin-right: auto;
+    .navbar-brand svg {
+        width: 300px; /* Adjust the width as needed */
+        height: 70px; /* Adjust the height as needed */
+    
     }
+
+    .brand-container {
+        top: -7px; /* Adjust this value as needed */
+        left: 7.7%; /* Adjust this value as needed */
+    }
+
+    .aboutus-banner img{
+        height: 200px;
+        margin-top: 85px;
+        width: 100%;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0);
+    }
+
+    .aboutus-banner-content{
+        text-align: text-center !important;
+        left: 35%;
+        top: 55%;
+    } 
 }
+
+
 
