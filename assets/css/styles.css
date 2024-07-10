@@ -687,7 +687,7 @@ box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
 
 .proceed-to-order{
     background-color: #007bb5;
-    padding: 50px;
+    padding: 30px;
 }
 
 .proceed-to-order .col-md-6:nth-of-type(1){
@@ -875,7 +875,12 @@ footer {
 }
 
 .footer-bottom p{
-    color: rgb(156, 153, 153)
+    color: rgb(156, 153, 153);
+    font-size: 16px;
+}
+
+.footer-contact p{
+    font-size: 16px;
 }
 
 /*About us section*/
@@ -1067,6 +1072,56 @@ footer {
     color: white;
 }
 
+.service_contents p{
+    font-size: 15px !important;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 10px;
+}
+.service_contents img{
+    width: 50px; 
+    height: 50px;
+}
+.service_contents{
+    gap: 70px;
+}
+
+.assignment_row p{
+    font-size: 16px !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: justify;
+    line-height: 1.8em;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 450;
+}
+
+.assignment_row h2{
+    font-size: 28px;
+}
+
+.assignment_row ul:nth-of-type(1){
+    list-style: none;
+}
+
+.assignment_types li{
+    font-family: "Montserrat", sans-serif;
+    list-style-type: circle !important;
+    line-height: 1.8em;
+    font-size: 16px;
+    font-weight: 450;
+    padding-left: 30px;
+    padding-right: 30px;
+    list-style-position: inside;
+}
+
+.assignment_types li::marker{
+    color: #105753;
+}
+
+
+
+
 
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
@@ -1151,6 +1206,22 @@ footer {
         line-height: 1.7em;
     }
 
+    .service_contents img{
+        width: 40px; 
+        height: 40px;
+    }
+    .service_contents{
+        gap: 20px;
+        
+    }
+
+    .service_contents p{
+        font-size: 12px !important;
+    }
+
+    .assignment_help img{
+       width: 437px !important;
+    }
 }
 
 

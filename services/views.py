@@ -27,6 +27,24 @@ def guarantee(request):
 
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
+
+def assignment_assistance(request):
+    return render(request, 'assignment_assistance.html')
+
+def academic_essay(request):
+    return render(request, 'academic_essay.html')
+
+def academic_coursework(request):
+    return render(request, 'academic_coursework.html')
+
+def personalised_writing(request):
+    return render(request, 'personalised_writing.html')
+
+def professional_report(request):
+    return render(request, 'professional_report.html')
+
+def thesis_and_dissertation(request):
+    return render(request, 'thesis_and_dissertation.html')
    
 def service_details(request, service_id):
    service = Service.objects.get(id=service_id)
