@@ -2,12 +2,19 @@
 
 {% block content %}
 {% load static %}
-<div class="aboutus-banner">
-    <img src="{{ MEDIA_URL }}/media/images/about-us.png" class="img-fluid aboutus-banner" alt="Banner" style="position: relative">
-    <div class="aboutus-banner-content" style="position:absolute">
-       <p class="text-white">ABOUT US</p>
+<div class="container_about px-0">
+    <div class="aboutus-banner" style="position: relative;">
+        <img src="{{ MEDIA_URL }}/media/images/about-us.png" class="img-fluid aboutus-banner" alt="Banner">
+        <div class="aboutus-banner-content">
+           <p class="text-white">ABOUT US</p>
+        </div>
     </div>
 </div>
+
+<div class="container_about_content">
+    
+</div>
+
 <div class="aboutus-section">
     <p>Urban Research Writing Services is 
        your trusted partner that achieve academic 
@@ -159,7 +166,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 pb-3">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/ceo.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/ceo.png' %}" />
                 </div>
                 <div class="team-text">
                     <p>Alex Brown</p>
@@ -170,7 +177,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/senior_researcher.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/senior_researcher.png' %}" />
                 </div>
                 <div class="team-text">
                     <p>Davies Walker</p>
@@ -181,7 +188,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/research_assistant.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/research_assistant.png' %}" />
                 </div>
                 <div class="team-text">
                     <p>Stella Tina</p>
@@ -192,7 +199,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/lead_writer.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/lead_writer.png' %}" />
                 </div>
                 <div class="team-text">
                     <p>Henry Austin</p>
@@ -205,7 +212,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 pb-3">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/senior_editor.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/senior_editor.png' %}"/>
                 </div>
                 <div class="team-text">
                     <p>Michael Brown</p>
@@ -216,7 +223,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/customer_support.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/customer_support.png' %}"/>
                 </div>
                 <div class="team-text">
                     <p>Alice Taylor</p>
@@ -227,7 +234,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/data_analyst.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/data_analyst.png' %}"/>
                 </div>
                 <div class="team-text">
                     <p>Daniel Ogana</p>
@@ -238,7 +245,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-6">
             <div class="card text-center team-card">
                 <div class="team">
-                    <img src="{% static '/expert/quality_assurance.png' %}" height="170px" width="170px"/>
+                    <img src="{% static '/expert/quality_assurance.png' %}"/>
                 </div>
                 <div class="team-text">
                     <p>Queen Austin</p>

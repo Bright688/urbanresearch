@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: rgb(255, 255, 255);
@@ -885,21 +886,36 @@ footer {
 }
 
 /*About us section*/
+.aboutus-banner {
+    position: relative;
+}
+
+
+.aboutus-banner-content p {
+    margin: 0;
+}
 
 .aboutus-banner-content{
-    background-color: rgb(8, 8, 8, 0.7);
-    padding:20px;
-    margin-top:-101px;
+    background-color: rgb(8, 8, 8, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 20%;
+    pointer-events: none; 
 }
 
 .aboutus-banner p{
-    font-size:30px;
+    font-size:35px;
     font-weight:600
 }
 
 .aboutus-section p{
-    margin-right: 250px;
-    margin-left:250px;
     text-align: justify;
     font-size:16px;
     font-family: "Montserrat", sans-serif;
@@ -907,10 +923,6 @@ footer {
     margin-top: 30px;
 }
 
-.aboutus-image{
-    margin-left: 250px;
-    margin-right: 250px;
-}
 
 .aboutus-img1, .aboutus-img2{
     background-color: #1fa59e;
@@ -943,7 +955,8 @@ footer {
 
 
 .team img{
-    border-radius: 15px;
+    -moz-border-radius:75px;
+    -webkit-border-radius: 75px;
 }
 
 .team{
@@ -954,6 +967,11 @@ footer {
     width: 200px;
     height:280px !important;
     border-radius: 15px;
+}
+
+.aboutus-container img{
+    height: 150px;
+    width: 150px;
 }
 
 .team-text{
@@ -1116,325 +1134,691 @@ footer {
     list-style-position: inside;
 }
 
-.assignment_types li::marker{
-    color: #105753;
+.personalize_writing_services li{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 450;
+    margin-left: -30px !important;
+    list-style: none;
 }
 
+
+
+.personalized_image img{
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+}
 
 
 
 
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
-/* Centering navbar items on large devices */
-@media (min-width: 992px) {
-    .navbar-nav {
-        margin-left: auto;
-        margin-right: auto;
+
+@media (max-width:400px){
+    .container_about{
+        max-width:400px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+
+    }
+
+    .aboutus-banner{
+        margin-top:55px;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
     }
     
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+}
+
+@media (max-width:425px){
+    .container_about{
+        max-width:425px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px !important;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .aboutus-banner{
+        margin-top:43px;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+}
+
+@media (max-width:450px){
+    .container_about{
+        max-width:450px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .aboutus-banner{
+        margin-top:43px;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+
+}
+
+@media (max-width:500px){
+    .container_about{
+        max-width:500px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+}
+
+@media (max-width:540px){
+    .container_about{
+        max-width:550px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px !important;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+}
+
+@media (max-width:600px){
+    .container_about{
+        max-width:600px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+}
+
+@media (max-width:700px){
+    .container_about{
+        max-width:700px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+   
+}
+
+@media (max-width:750px){
+    .container_about{
+        max-width:750px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 50% !important;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        display: flex;
+        font-size: 15px !important;
+    }
+
+    .navinfo span{
+        font-size: 15px !important;
+    }
+
+    .navinfo .fa-envelope{
+        margin-top: 4px;
+    }
+
+
+}
+
+@media (max-width:895px){
+    .container_about{
+        max-width:895px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .aboutus-banner{
+        margin-top:40px;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: right !important;
+        font-size: 15px !important;
+    }
+
+    
+
+}
+
+@media (max-width:900px){
+    .container_about{
+        max-width:900px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:20px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
+    }
+
+    .brand-container {
+        top: -2px; /* Adjust this value as needed */
+        left: 9.5%; /* Adjust this value as needed */
+        width: 60px;
+        height: 60px;
+    }
+    
+    .navbar-brand svg {
+        width: 200px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+    
+    }
+
+    .navinfo{
+        text-align: center;
+        font-size: 15px !important;
+    }
     
 }
 
-
-
-/*for medium devces*/
-@media (min-width: 768px) and (max-width: 992px) {
-    .section3 .card-title{
-        font-size: 15px;
-        margin-top: 5px;
+@media (max-width:1020px){
+    .container_about{
+        max-width:1020px !important;
     }
 
-    .section3 .card-text{
-        font-size: 12px;
-
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
     }
 
-    .section3 .card{
-        width: 230px;
+    .aboutus-banner-content{
+      left: 20%;
+    }
+    
+    .bg-cus{
+        background-color: rgba(35, 37, 35, 1.0) !important;
     }
 
-    .aboutus-image{
+}
+
+@media (max-width:1150px){
+    .container_about{
+        max-width:1150px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+
+}
+
+@media (max-width:1250px){
+    .container_about{
+        max-width:1250px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+}
+
+@media (max-width:1300px){
+    .container_about{
+        max-width:1300px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+}
+
+@media (max-width:1350px){
+    .container_about{
+        max-width:1350px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+}
+
+@media (max-width:1400px){
+    .container_about{
+        max-width:1400px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+}
+
+@media (max-width:1600px){
+    .container_about{
+        max-width:1600px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:35px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+}
+
+@media (max-width:1730px){
+    .container_about{
+        max-width:1730px !important;
+    }
+
+    .aboutus-banner p{
+        font-size:30px;
+        font-weight:600
+    }
+
+    .aboutus-banner-content{
+      left: 20%;
+    }
+}
+
+
+/* Custom styles for the navbar-toggler */
+.navbar-toggler-right {
+    float: right;
+}
+
+@media (min-width : 768px) and (max-width : 991.9px) {
+
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 1000;
+        display: none;
+        background-color: rgba(35, 37, 35, 1.0) !important;
+        padding-right: 100px;
+        padding-bottom: 20px;
+        padding-top:20px;
+        padding-left: 20px;
+        border-radius: 0 0 0 10px;
+        letter-spacing: 2px;
+        line-height: 30px;
+    }
+
+    .navbar-collapse.show {
+        display: block;
+    }
+
+    .aboutus-section{
         margin-left: 150px;
         margin-right: 150px;
     }
 
-    .navbar-brand svg {
-        width: 300px; /* Adjust the width as needed */
-        height: 80px; /* Adjust the height as needed */
-    
+    .aboutus-image{
+        margin-left: 200px;
+        margin-right: 200px;
     }
 
-    .brand-container {
-        top: -10px; /* Adjust this value as needed */
-        left: 4.7%; /* Adjust this value as needed */
-        height: 70px;
-        width: 70px;
+    .aboutus-container img{
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media (max-width : 767.9px){
+    .aboutus-section{
+        margin-left: 40px;
+        margin-right: 40px;
     }
 
-    .services-banner p:nth-of-type(1){
-        font-size: 30px;
-        font-weight: 700;
-        margin-left: 30px;
+    .aboutus-container img{
+        height: 120px;
+        width: 120px;
     }
-    
-    .services-banner p:nth-of-type(2){
-        font-size: 16px;
-        margin-left: 30px !important;
-    }
+}
 
-    .aboutus-section p{
-        margin-right: 100px !important;
-        margin-left:100px !important;
-        font-size:16px;
+@media (min-width : 992px){
+    .aboutus-section{
+        margin-left: 220px;
+        margin-right: 220px;
     }
 
     .aboutus-image{
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: 250px;
+        margin-right: 250px;
     }
-
-
-}
-
-/*small devices*/
-@media (max-width: 500px){
-    .section3 .card-title{
-        font-size: 18px;
-        margin-top: 5px;
-    }
-
-    .section3 .card-text{
-        font-size: 15px;
-    }
-
-    .section3 .card{
-        height: 200px !important;
-    }
-
-    .section-heading h3{
-        font-size: 16px;
-        word-spacing: -2px;
-    }
-    
-    .section1-text {
-        margin-left: 25px;
-        margin-right: 25px;
-
-    }
-    
-    .section1-text p {
-        text-align: justify; /* Justify the text within the paragraph */
-        font-size: 14px;
-        line-height: 1.8;
-    }
-
-    .aboutus-container .card{
-        width: 200px;
-        height:180px !important;
-    }
-
-    .services-banner p:nth-of-type(1){
-        font-size: 35px !important;
-        text-align: center;
-        margin-left: 0;
-    }
-
-    .services-banner p:nth-of-type(2){
-        font-size: 17px;
-        text-align: center;
-        line-height: 1.7em;
-    }
-
-    .service_contents img{
-        width: 40px; 
-        height: 40px;
-    }
-    .service_contents{
-        gap: 20px;
-        
-    }
-
-    .service_contents p{
-        font-size: 12px !important;
-    }
-
-    .assignment_help img{
-       width: 437px !important;
-    }
-
-
-    
-}
-
-
-/* Adjust navbar brand alignment for small and medium devices */
-@media (max-width: 991px){
-    .navbar-brand {
-        margin-left: 0;
-    }
-    .navbar-nav {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .navbar-bottom{
-        padding-bottom: 13px;
-    }
-    
-}
-
-
-
-
-/* Adjust navbar items alignment for small and medium devices */
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: left;
-        flex-direction: column;
-    }
-    .banner img {
-        height: 870px !important;
-    }
-    .banner-text{
-        padding-left:20px !important;
-        padding-right:20px !important;
-    }
-    .banner-text h1{
-    
-        font-size: 40px;
-        margin-top: 250px !important;
-        text-align: center;
-    }
-    
-    .banner-text h2{
-        font-size: 25px;
-        text-align: center;
-
-    }
-
-    .banner-text p{
-        font-size: 18px;
-        text-align: justify;
-        padding-left:20px;
-        padding-right:20px;
-
-    }
-    
-    .banner-content {
-        padding-bottom: 80px !important;
-        background-color: rgba(35, 37, 35, 0.9);
-        max-width: 1200px !important;
-    }
-    
-
-    .dropdown-menu{
-        width:100% !important;
-        padding-bottom: 0px !important;
-        padding-top: 0px !important;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
-    }
-
-
-    .pricing-calculator{
-        margin-top:10px !important;
-        background-color: rgba(15,57,55, 0.8);
-    }
-
-    .navbar-brand svg {
-        overflow: visible;
-        height: 80px; /* Adjust the height as needed */
-    
-    }
-
-    .brand-container {
-        top: 0; /* Adjust this value as needed */
-        left: 8%; /* Adjust this value as needed */
-        width: 70px;
-        height: 70px;
-    }
-
-    .navtop::before{
-        
-        
-        background-color: rgba(35, 37, 35, 1); /* Green background with 80% opacity */
-    }
-
-    .bg-cus{
-        background-color: rgba(35, 37, 35, 0.8);
-    }    
-
-    .container-expert p{
-        margin-left: 20px;
-        margin-right: 20px;
-        font-size: 15px;
-    }
-    
-    .card img {
-        border-radius: 50%;
-        width: 70px;
-        height: 70px !important;
-        margin-top:-10px;
-        
-    }
-    .card-title {
-        font-size: 15px;
-        margin-top: 45px;
-    }
-    .card-text {
-        font-size: 12px;
-    }
-
-    .carousel-container .card {
-        margin: 10px;
-        padding: 20px;
-        height: 170px !important;
-        width: 150px;
-    }
-
-    .aboutus-image{
-        margin-left: -29px;
-        margin-right: -29px;
-    }
-
-    .aboutus-section p{
-        margin-right: 50px;
-        margin-left:50px;
-    }
-
-
-    
-    .service_container .col-md-4{
-        margin-top:10px;
-    }
-
-    .navbar-brand svg {
-        width: 300px; /* Adjust the width as needed */
-        height: 70px; /* Adjust the height as needed */
-    
-    }
-
-    .brand-container {
-        top: -7px; /* Adjust this value as needed */
-        left: 7.7%; /* Adjust this value as needed */
-    }
-
-    .aboutus-banner img{
-        height: 200px;
-        margin-top: 85px;
-        width: 100%;
-    }
-
-    .bg-cus{
-        background-color: rgba(35, 37, 35, 1.0);
-    }
-
-    .aboutus-banner-content{
-        text-align: text-center !important;
-        left: 35%;
-        top: 55%;
-    } 
-}
-
-
-
+} 

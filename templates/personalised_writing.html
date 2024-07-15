@@ -1,14 +1,200 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 <div class="services-banner">
     <div class="row mx-0">
         <div class="col-md-6 col-sm-12 col-xs-12 col-12">
-            <p>Your <span style="  background-color: #1fa59e; border-radius: 10px;">One-Click Hub</span><br> for Every Assignment,<br> Any Subject</p>
-            <p class="mx-5">Get expert research assistance with just one click! Whatever the subject or project, we make it easy and straightforward to receive professional help.</p>
+            <p>Your <span style="  background-color: #1fa59e; border-radius: 10px;">One-Click Hub</span><br> for Every Personalised contents,<br> for Various Purposes</p>
+            <p class="mx-5">Get expert research assistance with just one click! Whatever the personalised writing contents, we make it easy and straightforward to receive professional help.</p>
         </div>
         <div class="col-md-6 d-none d-md-block">
             <img src="{{ MEDIA_URL }}/media/images/service_banner.png" class="img-fluid aboutus-banner" alt="Banner">
+        </div>
+    </div>
+</div>
+
+<div class="text-center d-flex justify-content-center align-items-center service_contents mt-5">
+    <div>
+       <image src="{% static 'icons/artificial-intelligence.png' %}"/>
+       <p class="text-dark">AI-free<br> content</p>
+     </div>
+    <div>
+       <image src="{% static 'icons/documents.png' %}"/>
+       <p class="text-dark">Plagiarism<br> free</p>
+    </div>
+    <div>
+        <image src="{% static 'icons/transaction.png' %}"/>
+       <p class="text-dark">Money-back<br> guarantee</p>
+    </div>
+    <div>
+        <image src="{% static 'icons/high-quality.png' %}"/>
+        <p class="text-dark">High<br> quality</p>
+    </div>
+    <div>
+        <image src="{% static 'icons/atm-card.png' %}"/>
+        <p class="text-dark">Safe & easy<br> payment</p>
+    </div>
+ </div>
+ <div class="personalized_writing_container mx-5 mt-5">
+
+    <div class="row assignment_row mt-3">
+        <div class="col-md-8">
+           <p>Our personalized writing solutions cater to your 
+            specific needs, ensuring unique and high-quality 
+            content for various purposes. Whether you need custom 
+            essays, personal statements, creative writing pieces, 
+            business plans, and customised writing solutions, 
+            we tailor our services to meet your requirements. 
+            Our team of experts provides meticulously crafted 
+            and original content that aligns with your objectives 
+            and preferences. Contact us for personalized writing 
+            assistance that delivers exceptional results, 
+            perfectly suited to your individual needs.</p>
+            
+
+                <div class="personalized_image">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-6 pe-0 ps-5">
+                            <img src="{{ MEDIA_URL }}/media/images/personalize_writing.png" alt="content">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-6 ps-0 pe-5">
+                            <img src="{{ MEDIA_URL }}/media/images/personalize_writing2.png" alt="content marketing">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6  col-sm-6 col-xs-6 col-6 pe-0 ps-5">
+                            <img src="{{ MEDIA_URL }}/media/images/personalize_writing3.png" alt="Blog writing">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-6 ps-0 pe-5">
+                            <img src="{{ MEDIA_URL }}/media/images/personalize_writing4.png" alt="content writing">
+                        </div>
+                    </div>
+
+                   
+                </div>
+                
+                <h2 class="text-center mt-5 mb-4">Why Choose Us?</h2>
+                <ul class="personalize_writing_services">
+                    <li><p><strong>Tailored Content:</strong> Each piece of content is crafted to match your individual needs and preferences.</p></li>
+                    <li><p><strong>Expert Writers: </strong>Our team consists of experienced professionals in various fields, ensuring expertise and quality.</p></li>
+                    <li><p><strong>High Quality: </strong>We ensure meticulously crafted, original, and plagiarism-free content.</p></li>
+                    <li><p><strong>Timely Delivery: </strong>Reliable and punctual service to meet your deadlines.</p></li>
+                    <li><p><strong>Confidentiality: </strong>Your privacy and data are of utmost importance to us.</p></li>
+                </ul>
+                
+                <h2 class="text-center mt-5 mb-4">Our Personalised Writing Services</h2>
+                <ul class="personalize_writing_services">
+                    <li><p><strong>Custom Essays: </strong>Personalized essays that reflect your unique voice and perspective.</p></li>
+                    <li><p><strong>Personal Statements: </strong>Compelling statements for college or job applications.</p></li>
+                    <li><p><strong>Creative Writing: </strong>Engaging and imaginative content tailored to your brief.</p></li>
+                    <li><p><strong>Business Plans: </strong>Detailed and professional business plans to suit your needs.</p></li>
+                    <li><p><strong>Marketing Materials: </strong>Effective marketing content to promote your brand.</p></li>
+                    <li><p><strong>Web Content: </strong>SEO-optimized content for websites and blogs.</p></li>
+                    <li><p><strong>Newsletters: </strong>Informative and engaging newsletters to keep your audience updated.</p></li>
+                    <li><p><strong>Speeches: </strong>Memorable speeches for any occasion.</p></li>
+                    <li><p><strong>Technical Documents: </strong>Clear and precise technical writing.</p></li>
+                    <li><p><strong>Grant Proposals: </strong>Persuasive proposals to secure funding.</p></li>
+                                        
+                </ul>
+                <h2 class="text-center mt-5 mb-4">How We Ensure Quality</h2>
+                <ul class="personalize_writing_services">
+                    <li><p><strong>Detailed Consultations: </strong>We begin with thorough consultations to understand your specific needs and objectives.</p></li>
+                    <li><p><strong>Expert Writers: </strong>Our team consists of experienced professionals in various fields to ensure high-quality content.</p></li>
+                    <li><p><strong>Rigorous Review: </strong>Each piece undergoes meticulous review for originality, clarity, and adherence to requirements.</p></li>
+                    <li><p><strong>Feedback and Revisions: </strong>We offer opportunities for feedback and revisions to ensure complete satisfaction with the final product.</p></li>
+                    <li><p><strong>Plagiarism-Free: </strong>We guarantee original and plagiarism-free content.</p></li>
+                </ul>
+
+                <h2 class="text-center mt-5">What We Need from You</h2>
+                <p><strong>Assignment Type: </strong>Specify exactly what needs to be done, including descriptions and any additional requirements.</p>
+                <p><strong>Due Date: </strong> Indicate when you need the assignment. Factor in time to review it before submission.</p>
+                <p><strong>Other information: </strong>Upload documents containing additional information such as instructions, clarification, and guidelines, to understand your assignment better.</p>
+                <p>Once you've filled out the order form and chosen your preferred payment method, we'll match your assignment with our experienced writers. You can communicate with us directly and get an update on your assignment.</p>
+        </div>   
+        <div class="col-md-4">
+            <div class="pricing-calculator mb-5" style=" background-color: rgba(15,57,55, 1.0) !important;">
+                <h3>Calculate Your Price</h3>
+                <form id="pricingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Service Type</label>
+                        <select class="form-control" id="serviceType" required>
+                            <option value="Essay">Essay</option>
+                            <option value="Admissions Essay">Admissions Essay</option>
+                            <option value="PowerPoint Presentation">PowerPoint Presentation</option>
+                            <option value="Research Paper">Research Paper</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Speech">Speech</option>
+                            <option value="Book Reviews">Book Reviews</option>
+                            <option value="Coursework">Coursework</option>
+                            <option value="Personal Statement">Personal Statement</option>
+                            <option value="Dissertation">Dissertation</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Literature">Literature</option>
+                            <option value="Sociology">Sociology</option>
+                            <option value="Math">Math</option>
+                            <option value="Statistics">Statistics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Economics">Economics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="numPages">Number of Pages</label>
+                        <select class="form-control" id="numPages" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Deadline (days)</label>
+                        <select class="form-control" id="deadline" required>
+                            <option value="10">10 days</option>
+                            <option value="9">9 days</option>
+                            <option value="8">8 days</option>
+                            <option value="7">7 days</option>
+                            <option value="6">6 days</option>
+                            <option value="5">5 days</option>
+                            <option value="4">4 days</option>
+                            <option value="3">3 days</option>
+                            <option value="2">2 days</option>
+                            <option value="1">1 day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Price</label>
+                        <input type="text" class="form-control" id="totalPrice" readonly>
+                       <div class="text-center"> 
+                           <a class="btn btn-lg ml-auto btn-custom2" href="{% url 'order_form' %}">Proceed to Order</a>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="row">
+        <div class="col-md-12 d-none d-md-block">
+            <div class="proceed-to-order pt-3 pb-3">
+                <div class="row">
+                    <div class="col-md-8 "><p class="text-white ml-5 pt-2">Do you want to Proceed to Order</p></div>
+                    <div class="col-md-4">
+                        <button class="btn btn-outline-custom ml-5"><span>Order Now</span></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
