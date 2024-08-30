@@ -994,7 +994,7 @@ footer {
 
 .services-banner{
     background-color: rgb(90, 87, 87);
-    max-width: 100%;
+    max-width: 100% !important;
     
 }
 
@@ -1103,6 +1103,7 @@ footer {
     font-size: 22px !important;
     font-weight: 600;
     margin-top: 45px;
+    color: #007bb5;
 }
 
 .service_container p{
@@ -1165,10 +1166,12 @@ footer {
 .myservices_row h2{
     font-size: 25px;
     margin-left: 30px;
+    color: #007bb5;
 }
 
 .myservices_row ul{
     list-style: none;
+    margin-left: -30px;
 }
 
 
@@ -1218,6 +1221,7 @@ footer {
    color: #fff !important;
 }
 
+
 .coursework_help img{
     border-radius: 10px;
 }
@@ -1226,8 +1230,80 @@ footer {
     width: 100%
 }
 
+.flex_container2 {
+    width: 100%; 
+    display: grid;
+}
+
+.flex_container2 .row{
+    background-color: #1ba099;
+    border-radius: 10px;
+}
+
+.flex_container2 img{
+    border-radius: 10px;
+}
+
+.flex_container2 img{
+    width: 350px;
+    height: 250px
+}
+
+.academic_essay img{
+    border-radius: 10px;
+    height: 300px;
+}
+
+.gp-banner {
+    display: flex;
+    background-color: #444343;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 400px;           /* Adjust the height as needed */
+}
+
+.gp-banner h2 {
+    margin: 0;
+}
+
+.guarantee-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.guarantee-container p{
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-weight:450;
+    line-height: 1.8em;
+    text-align: justify;
+}
+
+.guarantee h2 {
+    font-size: 1.8em;
+    color: #2980b9;
+    margin-bottom: 20px;
+}
 
 
+.guarantee-item {
+    margin-bottom: 20px;
+}
+
+.guarantee-item h3 {
+    font-size: 1.4em;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.guarantee-item p {
+    font-size: 1.1em;
+    margin-left: 20px;
+}
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
 
@@ -1281,6 +1357,13 @@ footer {
         margin-top: 4px;
     }
 
+    .flex_container .col-6 img{
+        width: 100px;
+        height: 100px
+    }
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:425px){
@@ -1331,7 +1414,9 @@ footer {
     .navinfo .fa-envelope{
         margin-top: 4px;
     }
-
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:450px){
@@ -1383,7 +1468,9 @@ footer {
         margin-top: 4px;
     }
 
-
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:500px){
@@ -1430,7 +1517,10 @@ footer {
     .navinfo .fa-envelope{
         margin-top: 4px;
     }
-
+    
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:540px){
@@ -1476,6 +1566,10 @@ footer {
 
     .navinfo .fa-envelope{
         margin-top: 4px;
+    }
+
+    .guarantee-container h2, h3{
+        text-align: center;
     }
 
 }
@@ -1524,7 +1618,10 @@ footer {
     .navinfo .fa-envelope{
         margin-top: 4px;
     }
-
+    
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:700px){
@@ -1572,7 +1669,9 @@ footer {
         margin-top: 4px;
     }
 
-   
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:750px){
@@ -1620,7 +1719,9 @@ footer {
         margin-top: 4px;
     }
 
-
+    .guarantee-container h2, h3{
+        text-align: center;
+    }
 }
 
 @media (max-width:895px){
@@ -1873,6 +1974,37 @@ footer {
         height: 120px;
         width: 120px;
     }
+
+    .assignment_assistance_icon{
+        display: flex;
+        margin-top: 50px;
+        gap: 10px;
+        margin-left: 42px;
+        margin-right: 20px
+    }
+    .assignment_assistance_icon img{
+        width: 30px !important;
+        height: 30px !important;
+        margin-top: -15px
+    }
+    
+    .assignment_assistance_icon p{
+       font-size: 12px;
+       font-weight: 450;
+    }
+
+    .services_banner_p1 p{
+        font-size: 25px;
+    }
+    
+    .services_banner_p2 p{
+        font-size: 14px !important;
+    }
+
+    .flex_container2 .col-md-6 img{
+        width: 170px;
+        height: 150px;
+     }
 }
 
 @media (max-width : 767.9px){
@@ -1885,6 +2017,28 @@ footer {
         height: 120px;
         width: 120px;
     }
+
+    .assignment_assistance_icon{
+        display: flex;
+        margin-top: 50px;
+        gap: 10px;
+    }
+    .assignment_assistance_icon img{
+        width: 30px !important;
+        height: 30px !important;
+        margin-top: -15px
+    }
+    
+    .assignment_assistance_icon p{
+       font-size: 12px;
+       font-weight: 450;
+    }
+
+    .flex_container2 img{
+        width: 150px;
+        height: 150px;
+     }
+
 }
 
 @media (min-width : 992px){
@@ -1897,4 +2051,21 @@ footer {
         margin-left: 250px;
         margin-right: 250px;
     }
+
 } 
+
+@media (min-width : 992px) and (max-width : 1201px){
+    .flex_container2 img{
+        width: 250px !important;
+        height: 200px !important;
+     }
+}
+
+@media (min-width : 1200px){
+    .flex_container2 img{
+        width: 350px !important;
+        height: 250px !important;
+     }
+}
+
+

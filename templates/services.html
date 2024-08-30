@@ -1,19 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 <div class="services-banner">
-    <div class="row mx-0">
+    <div class="row">
         <div class="col-md-6 col-sm-12 col-xs-12 col-12">
-            <p>Your <span style="  background-color: #1fa59e; border-radius: 10px;">One-Click Hub</span><br> for Every Assignment,<br> Any Subject</p>
-            <p class="mx-5">Get expert research assistance with just one click! Whatever the subject or project, we make it easy and straightforward to receive professional help.</p>
-        </div>
-        <div class="col-md-6 d-none d-md-block">
+             <div class="services_banner_p1">
+                <p>Your <span style="  background-color: #1fa59e; border-radius: 10px;">One-Click Hub</span><br> for Every Assignment,<br> Any Subject</p>
+             </div>
+             <div class="services_banner_p2">
+                <p class="mx-5">Get expert research assistance with just one click! Whatever the subject or project, we make it easy and straightforward to receive professional help.</p>
+             </div>
+             <div class="flex-container assignment_assistance_icon text-center d-flex justify-content-center">
+                <div>
+                    <image src="{% static 'icons/artificial-intelligence.png' %}"/>
+                    <p class="text-dark">AI-free<br> content</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/documents.png' %}"/>
+                    <p class="text-dark">Plagiarism<br> free</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/transaction.png' %}"/>
+                    <p class="text-dark">Money-back<br> guarantee</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/high-quality.png' %}"/>
+                    <p class="text-dark">High<br> quality</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/atm-card.png' %}"/>
+                    <p class="text-dark">Safe & easy<br> payment</p>
+                </div>
+            </div>
+        </div>   
+            
+        <div class="col-md-6 d-none d-md-block myservice-banner">
             <img src="{{ MEDIA_URL }}/media/images/service_banner.png" class="img-fluid aboutus-banner" alt="Banner">
         </div>
     </div>
 </div>
 
-<div class="service_container mt-5 mx-5">
+<div class="service_container  mt-5 mx-5">
     <div class="row">
         <div class="col-md-8">
             <div class="row">
@@ -56,9 +84,9 @@
 
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
-                    <a href="{% url 'professional_report' %}">
+                    <a href="{% url 'professional_report_assistance' %}">
                         <div class="card">
-                            <h3>Professional Report<br> Compilation</h3>
+                            <h3>Professional Report<br> Assistance</h3>
                             <p class="mx-5">Our professional report compilation service ensures meticulous attention to detail and clarity in presenting findings. We specialize in compiling comprehensive reports across various fields while adhering to industry standards.</p>
                          </div>
                     </a>
@@ -75,7 +103,7 @@
         </div>
         <div class="col-md-4">
             <div class="pricing-calculator" style=" background-color: rgba(15,57,55, 1.0) !important;">
-                <h3>Calculate Your Price</h3>
+                <h3 class="text-white">Calculate Your Price</h3>
                 <form id="pricingForm">
                     <div class="form-group">
                         <label for="serviceType">Service Type</label>
@@ -141,6 +169,20 @@
                        </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="row">
+        <div class="col-md-12 d-none d-md-block">
+            <div class="proceed-to-order pt-3 pb-3">
+                <div class="row">
+                    <div class="col-md-8 "><p class="text-white ml-5 pt-2">Do you want to Proceed to Order</p></div>
+                    <div class="col-md-4">
+                        <button class="btn btn-outline-custom ml-5"><span>Order Now</span></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

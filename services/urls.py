@@ -1,5 +1,5 @@
 from django.urls import path
-from services.views import service_details, order_form, home, about, myservices, blog_list, blog_detail, upvote_blog, downvote_blog, contact, order_success, pricing, guarantee, privacy_policy, assignment_assistance, academic_essay, academic_coursework, thesis_and_dissertation, personalised_writing, professional_report
+from services.views import service_details, order_form, home, about, myservices, blog_list, blog_detail, upvote_blog, downvote_blog, contact, order_success, pricing, guarantee, privacy_policy, assignment_assistance, academic_essay, academic_coursework, thesis_and_dissertation, personalised_writing, professional_report_assistance
 
 urlpatterns = [
     
@@ -16,7 +16,7 @@ urlpatterns = [
     path('academic_coursework/', academic_coursework, name='academic_coursework'),
     path('personalised_writing/', personalised_writing, name='personalised_writing'),
     path('thesis_and_dissertation/', thesis_and_dissertation, name='thesis_and_dissertation'),
-     path('professional_report/', professional_report, name='professional_report'),
+     path('professional_report_assistance/', professional_report_assistance, name='professional_report_assistance'),
     path('blog/', blog_list, name='blog'),
     path('blog/<int:blog_id>/', blog_detail, name='blog_detail'),
     path('blog/<int:blog_id>/upvote/', upvote_blog, name='upvote_blog'),

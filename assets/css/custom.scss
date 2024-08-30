@@ -17,5 +17,12 @@ $spacers: (
   // Add more as needed
 );
 
+// Generate padding-right classes
+@each $key, $value in $spacers {
+  .pr-#{$key} {
+    padding-right: $value;
+  }
+}
+
 // Import the rest of Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";

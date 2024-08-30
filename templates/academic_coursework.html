@@ -52,11 +52,12 @@
                     group assignments and create engaging discussion posts. With rigorous review 
                     processes and timely delivery, we guarantee your academic success. 
                     Trust us to handle your coursework with the utmost privacy and precision.
+                </p>
 
-                    <div class="coursework_help mx-4 mt-5">
+                    <div class="coursework_help mx-4 mt-4 pr-5">
                         <img src="{{ MEDIA_URL }}/media/images/coursework.png" alt="24/7" style="width:100%;">
                     </div>
-                </p>
+               
                 <h2 class="mt-5">Why Choose Us?</h2>
                 <ul>
                     <li><p><strong>Expert Guidance: </strong>Our team consists of experienced professionals who provide tailored support for all types of assignments</p></li>
@@ -90,6 +91,90 @@
                     <li><p><strong>Confidentiality: </strong>Rest assured that all shared information is kept private and secure</p></li>   
                 </ul>
             </div>
+            <div class="col-md-4">
+                <div class="pricing-calculator mb-5" style=" background-color: rgba(15,57,55, 1.0) !important;">
+                <h3>Calculate Your Price</h3>
+                <form id="pricingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Service Type</label>
+                        <select class="form-control" id="serviceType" required>
+                            <option value="Essay">Essay</option>
+                            <option value="Admissions Essay">Admissions Essay</option>
+                            <option value="PowerPoint Presentation">PowerPoint Presentation</option>
+                            <option value="Research Paper">Research Paper</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Speech">Speech</option>
+                            <option value="Book Reviews">Book Reviews</option>
+                            <option value="Coursework">Coursework</option>
+                            <option value="Personal Statement">Personal Statement</option>
+                            <option value="Dissertation">Dissertation</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Literature">Literature</option>
+                            <option value="Sociology">Sociology</option>
+                            <option value="Math">Math</option>
+                            <option value="Statistics">Statistics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Economics">Economics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="numPages">Number of Pages</label>
+                        <select class="form-control" id="numPages" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Deadline (days)</label>
+                        <select class="form-control" id="deadline" required>
+                            <option value="10">10 days</option>
+                            <option value="9">9 days</option>
+                            <option value="8">8 days</option>
+                            <option value="7">7 days</option>
+                            <option value="6">6 days</option>
+                            <option value="5">5 days</option>
+                            <option value="4">4 days</option>
+                            <option value="3">3 days</option>
+                            <option value="2">2 days</option>
+                            <option value="1">1 day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Price</label>
+                        <input type="text" class="form-control" id="totalPrice" readonly>
+                       <div class="text-center"> 
+                           <a class="btn btn-lg ml-auto btn-custom2" href="{% url 'order_form' %}">Proceed to Order</a>
+                       </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+    </div>
+</div>
+<div>
+    <div class="row">
+        <div class="col-md-12 d-none d-md-block">
+            <div class="proceed-to-order pt-3 pb-3">
+                <div class="row">
+                    <div class="col-md-8 "><p class="text-white ml-5 pt-2">Do you want to Proceed to Order</p></div>
+                    <div class="col-md-4">
+                        <button class="btn btn-outline-custom ml-5"><span>Order Now</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

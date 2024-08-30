@@ -40,8 +40,8 @@ def academic_coursework(request):
 def personalised_writing(request):
     return render(request, 'personalised_writing.html')
 
-def professional_report(request):
-    return render(request, 'professional_report.html')
+def professional_report_assistance(request):
+    return render(request, 'professional_report_assistance.html')
 
 def thesis_and_dissertation(request):
     return render(request, 'thesis_and_dissertation.html')
