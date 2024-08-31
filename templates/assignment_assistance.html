@@ -196,6 +196,40 @@
                     </div>
                 </form>
             </div>
+            <div class="guarantee_privacy mb-5">
+                <div class="card">
+                    <img src="{{ MEDIA_URL }}/media/images/guarantee.png" class="img-fluid" alt="Guarantee Banner">
+                    <div class="card-text">
+                         <p class="text-center">We guarantee unlimited revisions to meet your exact needs, and if you don't achieve passing grades, our quality assurance team will review your case for a potential refund within 14 days. Additionally, if there are issues with deadlines or high-level plagiarism, you are eligible for a 90% refund.</p>
+                    </div>
+                    <guarantee-button class="text-center">
+                        <a href="{% url 'guarantee' %}" class="btn btn-dark b-0">View More</a>
+                    </guarantee-button>
+                </div>
+                <div class="card privacy-card">
+                    <img src="{{ MEDIA_URL }}/media/images/privacy.png" class="img-fluid" alt="Privacy Policy Banner">
+                    <div class="card-text mt-3">
+                        <p class="text-center">Your privacy is our utmost priority; we take every measure to keep your personal and payment information secure and confidential, ensuring that your data is used only for its intended purpose and never shared without your explicit consent.</p>
+                    </div>
+                    <privacy-button class="text-center">
+                        <a href="{% url 'privacy_policy' %}" class="btn btn-dark b-0">View More</a>
+                    </privacy-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 d-block d-sm-block d-md-none">
+        <div class="proceed-to-order-sm pt-3 pb-3 ">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <p class="text-white ml-3 mb-0">Do you want to Proceed to Order</p>
+                </div>
+                <div class="col-4 text-center">
+                    <button class="btn btn-outline-custom p-3"><span>Order Now</span></button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

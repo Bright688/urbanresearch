@@ -69,6 +69,31 @@
                 <li><p><strong>Confidentiality: </strong>Your data and essays are handled with the utmost privacy and security</p></li>
                 <li><p><strong>Feedback and Revisions: </strong>Iterative feedback to ensure complete satisfaction</p></li>
             </ul>
+
+            <h2 class="mt-5">Type of Thesis and Dissertation Services We can Help With</h2>  
+            <ul>
+                    <li><p><strong>Argumentative Essays:  </strong>Crafting well-reasoned arguments supported by evidence</p></li>
+                    <li><p><strong>Descriptive Essays: </strong>Creating vivid, detailed descriptions</p></li>
+                    <li><p><strong>Expository Essays: </strong>Explaining complex ideas clearly and concisely</p></li>
+                    <li><p><strong>Narrative Essays: </strong>Writing engaging and coherent stories</p></li>
+                    <li><p><strong>Persuasive Essays: </strong>Convincing readers with compelling arguments</p></li>
+                    <li><p><strong>Comparative Essays: </strong>Analyzing similarities and differences between subjects</p></li>
+                    <li><p><strong>Analytical Essays: </strong>Breaking down and examining topics critically</p></li>
+                    <li><p><strong>Cause and Effect Essays: </strong> Exploring causes and consequences</p></li>
+                    <li><p><strong>Critical Essays: </strong>Evaluating and interpreting literary works</p></li>
+                    <li><p><strong>Reflective Essays: </strong>Sharing personal insights and experiences</p></li>
+            </ul>
+
+            <h2 class="mt-5">How We Ensure Quality</h2>
+            <ul>
+                <li><p><strong>Experienced Writers: </strong> Our team consists of professionals with expertise in various academic fields</p></li>
+                <li><p><strong>Detailed Consultations: </strong>We start by understanding your specific needs and requirements</p></li>
+                <li><p><strong>Rigorous Review Process:  </strong>Each essay undergoes thorough review for originality, clarity, and adherence to guidelines</p></li>
+                <li><p><strong>Plagiarism-Free Guarantee: </strong>We use advanced tools to ensure all work is 100% original</p></li>
+                <li><p><strong>Feedback and Revisions: </strong>We provide opportunities for feedback and revisions to ensure complete satisfaction</p></li>
+                <li><p><strong>Confidentiality: </strong>Your information and work are kept private and secure at all times</p></li>
+            </ul>
+
             <h2 class="mt-5">What We Need from You</h2>
             <ul>
                 <li><p><strong>Clear Instructions: </strong>Detailed requirements, objectives, and guidelines for the essay</p></li>
@@ -78,6 +103,110 @@
                 <li><p><strong>Confidentiality: </strong>Assurance that all shared information remains private and secure</p></li>
 
             </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="pricing-calculator mb-5" style=" background-color: rgba(15,57,55, 1.0) !important;">
+                <h3>Calculate Your Price</h3>
+                <form id="pricingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Service Type</label>
+                        <select class="form-control" id="serviceType" required>
+                            <option value="Essay">Essay</option>
+                            <option value="Admissions Essay">Admissions Essay</option>
+                            <option value="PowerPoint Presentation">PowerPoint Presentation</option>
+                            <option value="Research Paper">Research Paper</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Speech">Speech</option>
+                            <option value="Book Reviews">Book Reviews</option>
+                            <option value="Coursework">Coursework</option>
+                            <option value="Personal Statement">Personal Statement</option>
+                            <option value="Dissertation">Dissertation</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Literature">Literature</option>
+                            <option value="Sociology">Sociology</option>
+                            <option value="Math">Math</option>
+                            <option value="Statistics">Statistics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Economics">Economics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="numPages">Number of Pages</label>
+                        <select class="form-control" id="numPages" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Deadline (days)</label>
+                        <select class="form-control" id="deadline" required>
+                            <option value="10">10 days</option>
+                            <option value="9">9 days</option>
+                            <option value="8">8 days</option>
+                            <option value="7">7 days</option>
+                            <option value="6">6 days</option>
+                            <option value="5">5 days</option>
+                            <option value="4">4 days</option>
+                            <option value="3">3 days</option>
+                            <option value="2">2 days</option>
+                            <option value="1">1 day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Price</label>
+                        <input type="text" class="form-control" id="totalPrice" readonly>
+                       <div class="text-center"> 
+                           <a class="btn btn-lg ml-auto btn-custom2" href="{% url 'order_form' %}">Proceed to Order</a>
+                       </div>
+                    </div>
+                </form>
+            </div>
+            <div class="guarantee_privacy mb-5">
+                <div class="card">
+                    <img src="{{ MEDIA_URL }}/media/images/guarantee.png" class="img-fluid" alt="Guarantee Banner">
+                    <div class="card-text">
+                         <p class="text-center">We guarantee unlimited revisions to meet your exact needs, and if you don't achieve passing grades, our quality assurance team will review your case for a potential refund within 14 days. Additionally, if there are issues with deadlines or high-level plagiarism, you are eligible for a 90% refund.</p>
+                    </div>
+                    <guarantee-button class="text-center">
+                        <a href="{% url 'guarantee' %}" class="btn btn-dark b-0">View More</a>
+                    </guarantee-button>
+                </div>
+                <div class="card privacy-card">
+                    <img src="{{ MEDIA_URL }}/media/images/privacy.png" class="img-fluid" alt="Privacy Policy Banner">
+                    <div class="card-text mt-3">
+                        <p class="text-center">Your privacy is our utmost priority; we take every measure to keep your personal and payment information secure and confidential, ensuring that your data is used only for its intended purpose and never shared without your explicit consent.</p>
+                    </div>
+                    <privacy-button class="text-center">
+                        <a href="{% url 'privacy_policy' %}" class="btn btn-dark b-0">View More</a>
+                    </privacy-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 d-block d-sm-block d-md-none">
+        <div class="proceed-to-order-sm pt-3 pb-3 ">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <p class="text-white ml-3 mb-0">Do you want to Proceed to Order</p>
+                </div>
+                <div class="col-4 text-center">
+                    <button class="btn btn-outline-custom p-3"><span>Order Now</span></button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
