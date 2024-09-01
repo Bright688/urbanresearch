@@ -58,8 +58,17 @@ def order_form(request):
             return redirect('order_success')  # Redirect to a success page
     else:
         form = OrderForm()
-        services = Service.objects.all()
-        return render(request, 'order_form.html', {'form': form, 'services': services})
+
+    # This code will run for both GET and POST (if the form is not valid)
+    services = Service.objects.all()
+    page_range = range(1, 51)  # Create a range from 1 to 50
+
+    return render(request, 'order_form.html', {
+        'form': form,
+        'services': services,
+        'page_range': page_range  # Pass the range to the template context
+    })
+
 
 def order_success(request):
     return render(request, 'order_success.html')
