@@ -1,12 +1,13 @@
 from django.urls import path
-from services.views import service_details, order_form, home, about, myservices, blog_list, blog_detail, upvote_blog, downvote_blog, contact, order_success, pricing, guarantee, privacy_policy, assignment_assistance, academic_essay, academic_coursework, thesis_and_dissertation, personalised_writing, professional_report_assistance
+from services.views import service_details, order_form, home, about, myservices, blog_list, blog_detail, upvote_blog, downvote_blog, contactus, contact_thanks, order_success, pricing, guarantee, privacy_policy, assignment_assistance, academic_essay, academic_coursework, thesis_and_dissertation, personalised_writing, professional_report_assistance
 
 urlpatterns = [
     
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('services/', myservices, name='services'),
-    path('contact/', contact, name='contact'),
+    path('contactus/', contactus, name='contactus'),
+     path('contactus/thanks/', contact_thanks, name='contact_thanks'),
     path('service/<int:service_id>/', service_details, name='service_details'),
     path('pricing/', pricing, name='pricing'),
     path('guarantee/', guarantee, name='guarantee'),

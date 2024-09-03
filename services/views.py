@@ -4,6 +4,11 @@ from .form import OrderForm
 from .models import Blog, Comment
 from .form import CommentForm
 from django.views.decorators.http import require_POST
+from django.shortcuts import render, redirect
+from django.core.mail import EmailMessage, BadHeaderError
+from django.http import HttpResponse
+from django.conf import settings
+
 
 # Create your views here.
 def home(request):
@@ -19,8 +24,33 @@ def myservices(request):
 def pricing(request):
     return render(request, 'pricing.html')
 
-def contact(request):
-    return render(request, 'contact.html')
+def contactus(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        message = request.POST['message']
+
+        try:
+            email_message = EmailMessage(
+                subject=email + " " + 'Urban Research Contact Form Submission',
+                body=message,
+                from_email=settings.EMAIL_HOST_USER,  # Sender's email (to satisfy email server requirements)
+                to=[settings.EMAIL_HOST_USER],  # Recipient's email
+                headers={'Reply-To': email, 'From': email},  # Display user's email in the From header
+            )
+            email_message.send(fail_silently=False)
+            return redirect('contact_thanks')
+
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        except ConnectionRefusedError:
+            return HttpResponse('Could not connect to the email server. Please try again later.')
+        except Exception as e:
+            return HttpResponse(f'An error occurred: {e}')
+
+    return render(request, 'contactus.html')
+
+def contact_thanks(request):
+    return render(request, 'contact_thanks.html')
 
 def guarantee(request):
     return render(request, 'guarantee.html')

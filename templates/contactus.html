@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="contactus_banner">
+    <img src="{{ MEDIA_URL }}/media/images/contactus.png" class="img-fluid" alt="Contact Us">
+    <div class="contactus_content">
+        <h1>Contact US</h1>
+    </div>
+</div>
+
+ <!-- Contact Information Section -->
+ <div class="contact-info-section">
+    <h2>Our Contact Information</h2>
+    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 221B Baker Street, London NW1 6XE, United Kingdom</p>
+    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +44 20 7224 3688</p>
+    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@urbanresearch.com</p>
+    <p><i class="fas fa-clock"></i> <strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM</p>
+</div>
+
+<div class="contact-page mt-5">
+    <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Please send us your message and we'll get back to you as soon as possible.</p>
+    </div>
+    <form action="{% url 'contactus' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group contact-form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group contact-form-group">
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-group contact-form-group">
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
+</div>3
+{% endblock %}

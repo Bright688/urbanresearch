@@ -4,97 +4,201 @@
 {% load static %}
 <div class="gp-banner">
     <h2 class="text-white">Pricing</h2>
+    
+    <div class="flex-container assignment_assistance_icon text-center d-flex justify-content-center">
+                <div>
+                    <image src="{% static 'icons/artificial-intelligence.png' %}"/>
+                    <p class="text-dark">AI-free<br> content</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/documents.png' %}"/>
+                    <p class="text-dark">Plagiarism<br> free</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/transaction.png' %}"/>
+                    <p class="text-dark">Money-back<br> guarantee</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/high-quality.png' %}"/>
+                    <p class="text-dark">High<br> quality</p>
+                </div>
+                <div>
+                    <image src="{% static 'icons/atm-card.png' %}"/>
+                    <p class="text-dark">Safe & easy<br> payment</p>
+                </div>
+            </div>
 </div>
 
 <div class="pricing_container mb-5">
-    <div class="col-md-8 mx-5">
-        <div class="card">
-            <div class="pricing-page">
-                <div class="pricing-header mt-5">
-                    <p>Select a service to view pricing details.</p>
+    <div class="row"> 
+        <div class="col-md-8">
+            <div class="card pr_table_card">
+                <div class="pricing-page">
+                    <div class="pricing-header mt-5">
+                        <p>Select a service to view pricing details.</p>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="serviceSelect">Select Service:</label>
+                            <select id="serviceSelect">
+                                <option value="academic_assistance">Academic Assistance</option>
+                                <option value="personalized_writing_solutions">Personalized Writing Solutions</option>
+                                <option value="thesis_dissertation_support">Thesis and Dissertation Support</option>
+                                <option value="academic_coursework_assistance">Academic Coursework Assistance</option>
+                                <option value="professional_report_assistance">Professional Report Assistance</option>
+                                <option value="academic_essay_assistance">Academic Essay Assistance</option>
+                                <!-- Add other services here -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="numPages">Number of Pages:</label>
+                            <select id="numPages">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deadlineDays">Deadline (Days):</label>
+                            <select id="deadlineDays">
+                                <option value="10">10 Days</option>
+                                <option value="9">9 Days</option>
+                                <option value="8">8 Days</option>
+                                <option value="7">7 Days</option>
+                                <option value="6">6 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="4">4 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="2">2 Days</option>
+                                <option value="1">1 Day</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="currencySelect">Select Currency:</label>
+                            <select id="currencySelect">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="AUD">AUD</option>
+                                <option value="CAD">CAD</option>
+                                <option value="JPY">JPY</option>
+                                <option value="INR">INR</option>
+                                <option value="NGN">NGN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pricing-table-container">
+                        <h2>Service Prices</h2>
+                        <table class="pricing-table" id="pricingTable">
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Price per Page</th>
+                                    <th>Number of Pages</th>
+                                    <th>Deadline (Days)</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Prices will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="total-price" id="totalPrice"></div>
                 </div>
-
-                <div class="form-container">
-                    <div class="form-group">
-                        <label for="serviceSelect">Select Service:</label>
-                        <select id="serviceSelect">
-                            <option value="academic_assistance">Academic Assistance</option>
-                            <option value="personalized_writing_solutions">Personalized Writing Solutions</option>
-                            <option value="thesis_dissertation_support">Thesis and Dissertation Support</option>
-                            <option value="academic_coursework_assistance">Academic Coursework Assistance</option>
-                            <option value="professional_report_assistance">Professional Report Assistance</option>
-                            <option value="academic_essay_assistance">Academic Essay Assistance</option>
-                            <!-- Add other services here -->
-                        </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-1 feature_card free-feature-container p-4 shadow-lg" >
+                <div class="card-header text-center bg-primary text-white">
+                    <h3>Additional Free Features</h3>
+                </div>
+        
+                <div class="pr-container mt-4">
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p>Unlimited Revisions</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <strike class="text-muted">£ 10.81</strike>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="text-success font-weight-bold">FREE</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="numPages">Number of Pages:</label>
-                        <select id="numPages">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <!-- Add more options as needed -->
-                        </select>
+                    <hr class="bg-danger border-2">
+        
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p>Formatting</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <strike class="text-muted">£ 8.51</strike>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="text-success font-weight-bold">FREE</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="deadlineDays">Deadline (Days):</label>
-                        <select id="deadlineDays">
-                            <option value="10">10 Days</option>
-                            <option value="9">9 Days</option>
-                            <option value="8">8 Days</option>
-                            <option value="7">7 Days</option>
-                            <option value="6">6 Days</option>
-                            <option value="5">5 Days</option>
-                            <option value="4">4 Days</option>
-                            <option value="3">3 Days</option>
-                            <option value="2">2 Days</option>
-                            <option value="1">1 Day</option>
-                        </select>
+                    <hr class="bg-danger border-2">
+        
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p>Plagiarism Report</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <strike class="text-muted">£ 5</strike>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="text-success font-weight-bold">FREE</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="currencySelect">Select Currency:</label>
-                        <select id="currencySelect">
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="AUD">AUD</option>
-                            <option value="CAD">CAD</option>
-                            <option value="JPY">JPY</option>
-                            <option value="INR">INR</option>
-                            <option value="NGN">NGN</option>
-                        </select>
+                    <hr class="bg-danger border-2">
+        
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p>Reference List / Bibliography</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <strike class="text-muted">£ 5.51</strike>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="text-success font-weight-bold">FREE</p>
+                        </div>
+                    </div>
+                    <hr class="bg-danger border-2">
+        
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p>You will Save</p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <strike class="text-muted">£ 29.83</strike>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="text-success font-weight-bold">FREE</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="pricing-table-container">
-                    <h2>Service Prices</h2>
-                    <table class="pricing-table" id="pricingTable">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th>Price per Page</th>
-                                <th>Number of Pages</th>
-                                <th>Deadline (Days)</th>
-                                <th>Total Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Prices will be populated by JavaScript -->
-                        </tbody>
-                    </table>
+        
+                <p class="text-center mt-4 font-italic">Get these additional features <span class="text-primary font-weight-bold">FREE OF COST</span> with every order</p>
+        
+                <div class="text-center p-3">
+                    <a class="btn btn-custom3 btn-lg btn-primary text-white" href="{% url 'order_form' %}"><span>Proceed to Order</span></a>
                 </div>
-
-                <div class="total-price" id="totalPrice"></div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <!-- Empty column for layout purposes -->
-    </div>
-</div>
+</div>   
+        
+
+
 {% endblock %}

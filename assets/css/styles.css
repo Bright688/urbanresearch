@@ -1368,8 +1368,6 @@ guarantee-button a:hover{
 /* General container styling */
 .pricing_container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh; /* Full height of the viewport */
     padding: 20px;
     background-color: #f9f9f9;
@@ -1473,7 +1471,340 @@ guarantee-button a:hover{
     margin-top: 10px;
     color: #333;
 }
+
+
+
+.pricing_container .row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card-1{
+    border-radius: 20px !important;
+}
+.card-header {
+    border-radius: 10px 10px 0 0;
+    padding: 10px !important;
+    background-color: #007bff; /* Bootstrap's primary color */
+    color: white;
+    font-size: 1.5rem;
+    align-items: center !important;
+}
+
+.pricing_container .col-md-8, .col-md-4 {
+    padding-left: 0;
+        padding-right: 0;
+}
+
+.free-feature-container .row p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+strike.text-muted {
+    color: #6c757d; /* Bootstrap's muted color */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: red !important;
+}
+
+.text-success {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.pr-container hr {
+    margin: 0;
+    border-top-width: 2px;
+    border-color: #dc3545; /* Bootstrap's danger color */
+}
+
+.free-feature-container p.font-italic {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.btn-custom3 {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.free-feature-container .pr-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.btn-custom3{
+    position: relative;
+    display: inline-block;
+    padding: 15px 25px !important;
+    color: #000 !important;
+    background-color: transparent;
+    border: 2px solid #000;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: color 0.4s, border-color 0.4s;
+    border: 1px solid white !important;
+}
+
+.btn-custom3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1fa59e !important;;
+    transition: transform 0.4s ease;
+    transform: scaleY(0);
+    z-index: 0;
+}
+
+.btn-custom3:hover::before {
+    transform: scaleY(1);
+}
+
+.btn-custom3:hover {
+    color: black !important;
+    border-color: #fff;
+}
+
+.btn-custom3 span {
+    position: relative;
+    z-index: 1;
+    color: white !important;
+}
  
+.gp-banner{
+   position: relative;
+}
+
+.gp-banner h2{
+    position: absolute;;
+    top:180px;
+ } 
+
+ .gp-banner .flex-container{
+    position: absolute;;
+    top:250px;
+ } 
+
+ .contactus_banner {
+    position: relative;
+    display: flex;
+    align-items:end; /* Vertically centers the content */
+    justify-content: left; /* Horizontally centers the content */
+    height: 75vh; /* Optional: Ensures the banner takes up the full height of the viewport */
+}
+
+.contactus_content {
+    position: absolute;
+    text-align: center;
+    color: white; /* Optional: Adjust based on your design */
+    z-index: 1; /* Ensures the text appears above the image */
+    background-color: red;
+}
+
+.contactus_content h1{
+    background-color: #000;
+    padding: 50px;
+}
+
+/* Contact Page Styling */
+.contact-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact-page:hover {
+    transform: translateY(-5px);
+}
+
+/* Contact Header Styling */
+.contact-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.contact-header p {
+    font-size: 18px;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #34495e;
+    font-size: 16px;
+}
+
+/* Contact Thanks Page Styling */
+.contact-thanks-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact-thanks-page:hover {
+    transform: translateY(-5px);
+}
+
+.thanks-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.thanks-header p {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.thanks-body p {
+    font-size: 16px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.btn-home {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    font-size: 18px;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-home:hover {
+    background-color: #2980b9;
+    box-shadow: 0 10px 20px rgba(41, 128, 185, 0.4);
+}
+
+.contact-form-group input[type="email"],
+.contact-form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ecf0f1;
+    font-size: 16px;
+    color: #2c3e50;
+    background: #ecf0f1;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form-group input[type="email"]:focus,
+.contact-form-group textarea:focus {
+    border-color: #3498db;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.contact-form-group textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+/* Button Styling */
+.contact-form-group button {
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.contact-form-group button:hover {
+    background-color: #2980b9;
+    box-shadow: 0 10px 20px rgba(41, 128, 185, 0.4);
+}
+
+.thanks-body a:hover{
+   text-decoration: none;
+   color: white;
+}
+
+
+/* Contact Information Section */
+.contact-info-section {
+    margin-bottom: 40px;
+    padding: 50px;
+    background: #ecf0f1;
+    border-radius: 10px;
+}
+
+.contact-info-section h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.contact-info-section p {
+    font-size: 18px;
+    color: #34495e;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.contact-info-section i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
 
@@ -1537,6 +1868,14 @@ guarantee-button a:hover{
     
     .privacy-container h2{
         text-align: center;
+    }
+
+    .pricing_container{
+        padding-bottom: 1950px !important
+    }
+    
+    .pricing_container .card{
+        height: 1350px !important;
     }
 }
 
@@ -1924,7 +2263,9 @@ guarantee-button a:hover{
     .privacy-container h2{
         text-align: center;
     }
+
 }
+
 
 @media (max-width:895px){
     .container_about{
@@ -1966,7 +2307,6 @@ guarantee-button a:hover{
         font-size: 15px !important;
     }
 
-    
 
 }
 
@@ -2005,6 +2345,14 @@ guarantee-button a:hover{
         text-align: center;
         font-size: 15px !important;
     }
+
+    .pricing_container{
+        padding-bottom: 1100px !important
+    }
+    
+    .pricing_container .card{
+        height: 1070px !important;
+    }
     
 }
 
@@ -2025,6 +2373,7 @@ guarantee-button a:hover{
     .bg-cus{
         background-color: rgba(35, 37, 35, 1.0) !important;
     }
+    
 
 }
 
@@ -2040,6 +2389,14 @@ guarantee-button a:hover{
 
     .aboutus-banner-content{
       left: 20%;
+    }
+
+    .pricing_container{
+        padding-bottom: 1000px !important
+    }
+    
+    .pricing_container .card{
+        height: 950px !important;
     }
 
 }
@@ -2140,7 +2497,7 @@ guarantee-button a:hover{
     float: right;
 }
 
-@media (min-width : 768px) and (max-width : 991.9px) {
+@media (min-width : 768px) and (max-width : 1023.9px) {
 
     .navbar-collapse {
         position: absolute;
@@ -2207,6 +2564,16 @@ guarantee-button a:hover{
         width: 170px;
         height: 150px;
      }
+
+     .pricing_container{
+        padding-bottom: 1260px !important
+    }
+    
+    .pricing_container .card{
+        height: 1280px !important;
+    }
+
+    
 }
 
 @media (max-width : 767.9px){
@@ -2259,6 +2626,89 @@ guarantee-button a:hover{
         padding: 10px;
     }
 
+    .pricing_container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .pricing_container .col-md-8, .col-md-4 {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .pricing_container{
+        padding-bottom: 1950px !important
+    }
+    
+    .pricing_container .card{
+        height: 1350px !important;
+    }
+
+    .gp-banner {
+       
+        height: 250px !important;      
+    }
+
+    .gp-banner h2{
+        position: absolute;;
+        top:100px;
+     } 
+    
+     .gp-banner .flex-container{
+        position: absolute;;
+        top:130px;
+     }
+     
+     .contactus_banner{
+        margin-top: -40px;
+     }
+     .contactus_content {
+        position: absolute;
+        text-align: center;
+        color: white; /* Optional: Adjust based on your design */
+        z-index: 1; /* Ensures the text appears above the image */
+    }
+    .contactus_content h1{
+        background-color: #000;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .contact-page {
+        padding: 30px;
+    }
+
+    .contact-header h1 {
+        font-size: 28px;
+    }
+
+    .contact-header p {
+        font-size: 16px;
+    }
+
+    .contact-form-group button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .contact-thanks-page {
+        padding: 30px;
+    }
+
+    .thanks-header h1 {
+        font-size: 28px;
+    }
+
+    .thanks-header p,
+    .thanks-body p {
+        font-size: 16px;
+    }
+
+    .btn-home {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
 }
 
 @media (min-width : 992px){
