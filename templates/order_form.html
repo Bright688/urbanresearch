@@ -3,77 +3,88 @@
 {% block content %}
 {% load static %}
 <style>
-    body {
-        background-color: rgb(151, 149, 149);
+        body {
+        background-color: rgb(230, 230, 230);
+        font-family: Arial, sans-serif;
     }
+    
 </style>
 
 <div class="order-form-container">
     <h1>Order Form</h1>
     <form method="post" onsubmit="return validateForm()">
         {% csrf_token %}
-        <div class="form-group order-form-group">
-            <label for="id_name">Name</label>
-            <input type="text" id="id_name" name="name" required>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
         </div>
-        <div class="form-group order-form-group">
-            <label for="id_email">Email</label>
-            <input type="email" id="id_email" name="email" required>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
         </div>
-        <div class="form-group order-form-group">
-            <label for="id_service">Service</label>
-            <select id="serviceSelect" name="service" required>
-                {% for service in services %}
-                    <option value="{{ service.id }}" data-price="{{ service.price }}">
-                        {{ service.name }}
-                    </option>
-                {% endfor %}
+
+        <div class="form-group">
+            <label for="serviceSelect">Select Service Category</label>
+            <select id="serviceSelect" name="serviceSelect" class="form-control" required>
+                <!-- Service categories will be listed here -->
+                <option value="academic_assistance">Academic Assistance</option>
+                <option value="personalized_writing_solutions">Personalized Writing Solutions</option>
+                <option value="thesis_dissertation_support">Thesis/Dissertation Support</option>
+                <option value="academic_coursework_assistance">Academic Coursework Assistance</option>
+                <option value="professional_report_assistance">Professional Report Assistance</option>
+                <option value="academic_essay_assistance">Academic Essay Assistance</option>
             </select>
         </div>
-        <div class="form-group order-form-group">
-            <label for="id_sub_service">Sub-Service</label>
-            <select id="id_sub_service" name="sub_service" required></select>
+
+        <div class="form-group">
+            <label for="subServiceSelect">Select Sub-service</label>
+            <select id="subServiceSelect" name="subServiceSelect" class="form-control" required>
+                <!-- Sub-services will be populated dynamically -->
+            </select>
         </div>
-        <div class="form-group order-form-group">
+
+        <div class="form-group">
             <label for="numPages">Number of Pages</label>
-            <select id="numPages" name="pages" required>
-                {% for page in page_range %}
-                    <option value="{{ page }}">{{ page }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group order-form-group">
-            <label for="id_deadline">Deadline</label>
-            <input type="date" id="id_deadline" name="deadline" required onchange="calculateDeadlineDays()">
-        </div>
-        <div class="form-group order-form-group">
-            <label for="id_deadline_days">Deadline Days</label>
-            <input type="text" id="id_deadline_days" name="deadline_days" readonly>
-        </div>
-        <div class="form-group order-form-group">
-            <label for="id_currency">Currency</label>
-            <select id="currencySelect" name="currency" required>
-                <option value="usd">USD</option>
-                <option value="eur">EUR</option>
-                <option value="gbp">GBP</option>
-                <option value="aud">AUD</option>
-                <option value="cad">CAD</option>
-                <option value="jpy">JPY</option>
-                <option value="inr">INR</option>
-            </select>
-        </div>
-        <div id="price-display">Price: $0</div>
-
-        <div class="form-group order-form-group">
-            <input type="checkbox" id="agree_guarantee" name="agree_guarantee" required onchange="checkAgreements()">
-            <label for="agree_guarantee">I agree to the <a href="{% url 'guarantee' %}" target="_blank">Guarantee</a></label>
-        </div>
-        <div class="form-group order-form-group">
-            <input type="checkbox" id="agree_privacy" name="agree_privacy" required onchange="checkAgreements()">
-            <label for="agree_privacy">I agree to the <a href="{% url 'privacy_policy' %}" target="_blank">Privacy Policy</a></label>
+            <input type="number" id="numPages" name="numPages" class="form-control" min="1" value="1" required>
         </div>
 
-        <button type="submit" class="btn order-btn btn-primary" id="submit-button" disabled>Submit</button>
+        <div class="form-group">
+            <label for="deadlineDate">Deadline Date</label>
+            <input type="date" id="deadlineDate" name="deadlineDate" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="deadlineDays">Deadline Days</label>
+            <input type="number" id="deadlineDays" name="deadlineDays" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="currencySelect">Currency</label>
+            <select id="currencySelect" name="currencySelect" class="form-control" required>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+                <option value="JPY">JPY</option>
+                <option value="INR">INR</option>
+                <option value="NGN">NGN</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="totalPrice">Total Price</label>
+            <p id="totalPrice" class="form-control-static"></p>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
+            <label for="termsCheckbox">I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a></label>
+        </div>
+
+        <button type="submit" id="submitButton" class="btn btn-primary" disabled>Submit Order</button>
     </form>
 </div>
+
 {% endblock %}

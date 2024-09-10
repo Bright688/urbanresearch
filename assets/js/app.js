@@ -362,6 +362,7 @@ $(document).ready(function(){
         INR: '₹',
         NGN: '₦',
     };
+
     // Function to fetch exchange rates for all specified currencies
     async function fetchExchangeRates() {
         try {
@@ -370,13 +371,13 @@ $(document).ready(function(){
 
             // Map the exchange rates to the currency symbols
             exchangeRates = data.conversion_rates;
-            console.log(exchangeRates)
 
             populatePricingTable();
         } catch (error) {
             console.error('Error fetching exchange rates:', error);
         }
     }
+
 
     // Function to populate pricing table
     function populatePricingTable() {
@@ -400,10 +401,30 @@ $(document).ready(function(){
         const currencyRate = exchangeRates[selectedCurrency] || 1;
         const currencySymbol = currencySymbols[selectedCurrency] || '';
 
+        // Calculate the price adjustment based on the deadline days
+        
+
+        // Deadline pricing adjustment logic
+        let deadlineAdjustment = 0;
+
+        if (deadline <= 3) {
+            // If deadline is 1-3 days, increase price by 30%
+            deadlineAdjustment = 1.3;
+        } else if (deadline <= 6) {
+            // If deadline is 4-6 days, increase price by 15%
+            deadlineAdjustment = 1.15;
+        } else if (deadline <= 10) {
+            // If deadline is 7-10 days, use standard price (no change)
+            deadlineAdjustment = 1;
+        }
+        
+
+        
+
         // Iterate through subcategories and populate the table
         for (const [subcategory, details] of Object.entries(subcategories)) {
             const pricePerPage = details.pricePerPage;
-            const totalPrice = pricePerPage * numPages * currencyRate;
+            const totalPrice = deadlineAdjustment * pricePerPage * numPages * currencyRate;
 
             const row = document.createElement('tr');
 
@@ -432,6 +453,8 @@ $(document).ready(function(){
             pricingTable.appendChild(row);
         }
     }
+
+    
     $(document).ready(function(){
         const serviceSelect = document.getElementById('serviceSelect');
         const numPagesSelect = document.getElementById('numPages');
@@ -448,5 +471,85 @@ $(document).ready(function(){
     })
 
 
+    const deadlineDateInput = document.getElementById('deadlineDate');
+    const deadlineDaysInput = document.getElementById('deadlineDays');
+
+    function updateDeadlineDays() {
+        const deadlineDate = new Date(deadlineDateInput.value);
+        const currentDate = new Date();
+
+        if (!isNaN(deadlineDate.getTime())) { // Check if deadlineDate is a valid date
+            const timeDiff = deadlineDate - currentDate;
+            const dayDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+
+            deadlineDaysInput.value = dayDiff >= 0 ? dayDiff : 0; // Ensure non-negative days
+        } else {
+            deadlineDaysInput.value = ''; // Clear the field if the date is invalid
+        }
+    }
+
+    // Add event listener to update the deadline days when the date changes
+    deadlineDateInput.addEventListener('change', updateDeadlineDays);
+
+    // Optionally, initialize the field on page load
+    updateDeadlineDays();
+
+    
+
+    // Function to dynamically populate sub-services
+    function populateSubServices() {
+        const serviceSelect = document.getElementById('serviceSelect');
+        const subServiceSelect = document.getElementById('subServiceSelect');
+        // Clear existing sub-service options
+        subServiceSelect.innerHTML = '';
+
+        const selectedService = serviceSelect.value;
+        const subcategories = servicePrices[selectedService].subcategories;
+
+        // Populate new options
+        for (const subService in subcategories) {
+            const option = document.createElement('option');
+            option.value = subService;
+            option.text = subService.replace(/_/g, ' ');
+            subServiceSelect.appendChild(option);
+        }
+    }
+
+    // Event listener to update sub-services when a service is selected
+    serviceSelect.addEventListener('change', populateSubServices);
+    // Automatically populate sub-services for the initially selected service
+    populateSubServices();
+
+    const termsCheckbox = document.getElementById('termsCheckbox');
+    const submitButton = document.getElementById('submitButton');
+
+    // Function to toggle submit button state based on checkbox
+    function toggleSubmitButton() {
+        submitButton.disabled = !termsCheckbox.checked;
+    }
+
+    // Initial check to set the button state
+    toggleSubmitButton();
+
+    // Add event listener to checkbox
+    termsCheckbox.addEventListener('change', toggleSubmitButton);
+
+    // Function to handle form validation
+    function validateForm() {
+        if (!termsCheckbox.checked) {
+            alert("You must agree to the Terms and Conditions before submitting.");
+            return false;
+        }
+        // Additional form validation logic can be added here
+        return true;
+    }
+
+    // Attach validateForm function to form submission
+    document.querySelector('form').onsubmit = validateForm;
+
+
 });
+
+    
+
 

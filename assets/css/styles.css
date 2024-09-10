@@ -1781,6 +1781,11 @@ strike.text-muted {
     color: #2c3e50;
     margin-bottom: 15px;
     font-weight: 600;
+    
+}
+
+.contact-info-section a:hover{
+   text-decoration: none;
 }
 
 .contact-info-section p {
@@ -1803,7 +1808,52 @@ strike.text-muted {
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-
+/*order form*/
+body {
+    background-color: rgb(230, 230, 230);
+    font-family: Arial, sans-serif;
+}
+.order-form-container {
+    width: 50%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.order-form-container .form-group {
+    margin-bottom: 15px;
+}
+.order-form-container label {
+    font-weight: bold;
+}
+.order-form-container .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.order-form-container .btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.order-form-container .btn:hover {
+    background-color: #218838;
+}
+.order-form-container .form-control-static {
+    font-weight: bold;
+    font-size: 1.2em;
+}
 
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
@@ -2708,6 +2758,25 @@ strike.text-muted {
     .btn-home {
         font-size: 16px;
         padding: 10px 25px;
+    }
+
+    .contactus_banner {
+       margin-top: -55px;
+    }
+
+    .contact-info-section h2 {
+        font-size: 22px;
+        text-align: center;
+        
+    }
+    
+    .contact-info-section p {
+        font-size: 15.7px;
+        line-height: 1.4;
+    }
+
+    .map-section h3{
+        font-size: 22px
     }
 }
 
