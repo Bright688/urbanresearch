@@ -4,85 +4,86 @@
 {% load static %}
 <style>
         body {
-        background-color: rgb(230, 230, 230);
-        font-family: Arial, sans-serif;
-    }
-    
+        background-color: rgb(126, 123, 123);
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+    }   
 </style>
 
 <div class="order-form-container">
     <h1>Order Form</h1>
-    <form method="post" onsubmit="return validateForm()">
+    <form method="post" id="orderForm">
         {% csrf_token %}
+        
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-            <label for="serviceSelect">Select Service Category</label>
-            <select id="serviceSelect" name="serviceSelect" class="form-control" required>
-                <!-- Service categories will be listed here -->
-                <option value="academic_assistance">Academic Assistance</option>
-                <option value="personalized_writing_solutions">Personalized Writing Solutions</option>
-                <option value="thesis_dissertation_support">Thesis/Dissertation Support</option>
-                <option value="academic_coursework_assistance">Academic Coursework Assistance</option>
-                <option value="professional_report_assistance">Professional Report Assistance</option>
-                <option value="academic_essay_assistance">Academic Essay Assistance</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="subServiceSelect">Select Sub-service</label>
-            <select id="subServiceSelect" name="subServiceSelect" class="form-control" required>
-                <!-- Sub-services will be populated dynamically -->
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="numPages">Number of Pages</label>
-            <input type="number" id="numPages" name="numPages" class="form-control" min="1" value="1" required>
-        </div>
-
-        <div class="form-group">
-            <label for="deadlineDate">Deadline Date</label>
-            <input type="date" id="deadlineDate" name="deadlineDate" class="form-control" required>
+            {{ form.name.label_tag }} {{ form.name }}
         </div>
         
         <div class="form-group">
-            <label for="deadlineDays">Deadline Days</label>
-            <input type="number" id="deadlineDays" name="deadlineDays" class="form-control" readonly>
+            {{ form.email.label_tag }} {{ form.email }}
         </div>
-
+        
         <div class="form-group">
-            <label for="currencySelect">Currency</label>
-            <select id="currencySelect" name="currencySelect" class="form-control" required>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-                <option value="AUD">AUD</option>
-                <option value="CAD">CAD</option>
-                <option value="JPY">JPY</option>
-                <option value="INR">INR</option>
-                <option value="NGN">NGN</option>
-            </select>
+            {{ form.service.label_tag }} {{ form.service }}
         </div>
-
+        
+        <div class="form-group">
+            {{ form.sub_service.label_tag }} {{ form.sub_service }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.num_pages.label_tag }} {{ form.num_pages }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.deadline_date.label_tag }} {{ form.deadline_date }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.currency.label_tag }} {{ form.currency }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.payment_method.label_tag }} {{ form.payment_method }}
+        </div>
+        
+        <!-- Credit Card Payment Fields -->
+        <div id="credit-card-section" style="display: none;">
+            <div class="form-group">
+                {{ form.card_number.label_tag }} {{ form.card_number }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.expiry_date.label_tag }} {{ form.expiry_date }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.cvv.label_tag }} {{ form.cvv }}
+            </div>
+        </div>
+        
+        <!-- Cryptocurrency Payment Fields -->
+        <div id="crypto-section" style="display: none;">
+            <div class="form-group">
+                {{ form.crypto_wallet.label_tag }} {{ form.crypto_wallet }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.crypto_type.label_tag }} {{ form.crypto_type }}
+            </div>
+        </div>
+        
         <div class="form-group">
             <label for="totalPrice">Total Price</label>
-            <p id="totalPrice" class="form-control-static"></p>
+            <p id="totalPrice" class="form-control-static">0.00</p>
         </div>
-
+        
         <div class="form-group">
             <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
             <label for="termsCheckbox">I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a></label>
         </div>
-
+        
         <button type="submit" id="submitButton" class="btn btn-primary" disabled>Submit Order</button>
     </form>
 </div>

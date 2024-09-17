@@ -1,5 +1,6 @@
 from django.shortcuts import render,  get_object_or_404, redirect
 from .models import Service
+from django.http import JsonResponse
 from .form import OrderForm
 from .models import Blog, Comment
 from .form import CommentForm
@@ -80,24 +81,25 @@ def service_details(request, service_id):
    service = Service.objects.get(id=service_id)
    return render(request, 'service_details.html', {'service': service})
 
+def get_subservices(request):
+    service = request.GET.get('service')
+    subservices = OrderForm.SUBSERVICE_CHOICES.get(service, [])
+    return JsonResponse({'subservices': subservices})
+
 def order_form(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('order_success')  # Redirect to a success page
+            # Handle form submission here
+            # Perform calculations, save data, etc.
+            if form.is_valid():
+                total_price = form.calculate_total_price()
+                return render(request, 'order_success.html', {'total_price': total_price})
+            
     else:
         form = OrderForm()
 
-    # This code will run for both GET and POST (if the form is not valid)
-    services = Service.objects.all()
-    page_range = range(1, 51)  # Create a range from 1 to 50
-
-    return render(request, 'order_form.html', {
-        'form': form,
-        'services': services,
-        'page_range': page_range  # Pass the range to the template context
-    })
+    return render(request, 'order_form.html', {'form': form})
 
 
 def order_success(request):

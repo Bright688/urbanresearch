@@ -1,4 +1,4 @@
-#!/home/bright/Desktop/urbanresearch/.venv/bin/python
+#!/home/bright/Desktop/urbanresearch/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

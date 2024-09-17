@@ -1809,35 +1809,61 @@ strike.text-muted {
 }
 
 /*order form*/
-body {
-    background-color: rgb(230, 230, 230);
-    font-family: Arial, sans-serif;
+
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 .order-form-container {
-    width: 50%;
+    max-width: 600px;
     margin: 50px auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom:50px !important;
+    margin-top: 130px !important;
+    transform: translateY(30px);
+    animation: fadeInSlideUp 2s ease-out forwards;
 }
-h1 {
+
+.order-form-container h1 {
     text-align: center;
     color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    animation: fadeInSlideUp 2s ease-out forwards;
 }
+
 .order-form-container .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
+
 .order-form-container label {
     font-weight: bold;
+    margin-bottom: 5px;
 }
+
 .order-form-container .form-control {
-    width: 100%;
     padding: 10px;
-    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
 }
+
+.order-form-container .form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    transition: border-color 2s ease, box-shadow 2s ease;
+}
+
 .order-form-container .btn {
     background-color: #28a745;
     color: white;
@@ -1845,15 +1871,24 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1.2rem;
     width: 100%;
 }
+
 .order-form-container .btn:hover {
     background-color: #218838;
 }
+
 .order-form-container .form-control-static {
     font-weight: bold;
     font-size: 1.2em;
+    margin: 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
 
 /*--------------------------------------------------------------*/
 /*MEDIA QUERIES*/
@@ -2777,6 +2812,19 @@ h1 {
 
     .map-section h3{
         font-size: 22px
+    }
+
+    .order-form-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .order-form-container h1 {
+        font-size: 1.5em;
+    }
+
+    .order-form-container .btn {
+        font-size: 1rem;
     }
 }
 
