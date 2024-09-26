@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage, BadHeaderError
 from django.http import HttpResponse
 from django.conf import settings
-
+import requests
 
 # Create your views here.
 def home(request):
@@ -90,17 +90,97 @@ def order_form(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            # Handle form submission here
-            # Perform calculations, save data, etc.
-            if form.is_valid():
-                total_price = form.calculate_total_price()
-                return render(request, 'order_success.html', {'total_price': total_price})
+            # Extract necessary data from the form
+            payment_method = form.cleaned_data['payment_method']
             
-    else:
-        form = OrderForm()
-
+            # Redirect to the appropriate payment view based on the payment method selected
+            if payment_method == 'paystack':
+                return redirect('paystack_payment_view')  # Redirect to Paystack payment view
+            elif payment_method == 'crypto':
+                return redirect('crypto_payment_view')  # Redirect to crypto payment view
+        
+        # If form is invalid, render the form again with errors
+        return render(request, 'order_form.html', {'form': form})
+    
+    # For GET requests, initialize an empty form
+    form = OrderForm()
     return render(request, 'order_form.html', {'form': form})
+   
 
+# Paystack payment view
+def paystack_payment_view(request):
+    if request.method == 'POST':
+        # Ensure the user is authenticated or use a provided email
+        user_email = request.user.email if request.user.is_authenticated else request.POST.get('email')
+
+        paystack_secret_key = settings.PAYSTACK_SECRET_KEY
+        headers = {
+            'Authorization': f'Bearer {paystack_secret_key}',
+            'Content-Type': 'application/json'
+        }
+        
+        # Generate the payment data
+        payment_data = {
+            'email': user_email,  # User's email
+            'amount': 1000 * 100,  # Amount in kobo (Naira is multiplied by 100)
+            'callback_url': request.build_absolute_uri('/payment/callback/')  # URL to handle the callback
+        }
+        
+        # Send payment request to Paystack
+        response = requests.post('https://api.paystack.co/transaction/initialize', json=payment_data, headers=headers)
+        response_data = response.json()
+        
+        # Redirect to Paystack payment page
+        if response_data['status']:
+            payment_url = response_data['data']['authorization_url']
+            return redirect(payment_url)
+        else:
+            # Handle the error
+            return redirect('payment_error_view')  # Redirect to an error view if payment fails
+
+    return render(request, 'paystack_payment.html')  # Render payment template for GET requests
+    
+# Crypto payment view
+def crypto_payment_view(request):
+    if request.method == 'POST':
+        coinbase_api_key = settings.COINBASE_API_KEY
+        headers = {
+            'X-CC-Api-Key': coinbase_api_key,
+            'X-CC-Version': '2018-03-22'
+        }
+
+        # Get the calculated amount (ensure this is replaced with your calculated amount)
+        amount = request.POST.get('amount', '10.00')  # Default amount as an example; replace accordingly
+        
+        # Generate payment data
+        payment_data = {
+            'name': 'Order Payment',
+            'description': 'Order payment via cryptocurrency',
+            'pricing_type': 'fixed_price',
+            'local_price': {
+                'amount': amount,  # Use the calculated amount
+                'currency': 'USD'
+            },
+            'redirect_url': request.build_absolute_uri('/payment/success/'),
+            'cancel_url': request.build_absolute_uri('/payment/cancel/')
+        }
+
+        # Send request to Coinbase Commerce API
+        response = requests.post('https://api.commerce.coinbase.com/charges', json=payment_data, headers=headers)
+        response_data = response.json()
+        
+        if response.status_code == 201:
+            # Redirect to the Coinbase checkout page
+            payment_url = response_data['data']['hosted_url']
+            return redirect(payment_url)
+        else:
+            # Handle error
+            return redirect('payment_error_view')  # Redirect to error view if request fails
+
+    return render(request, 'crypto_payment.html')  # Render payment template for GET requests
+    
+def payment_error_view(request):
+    return render(request, 'payment_error.html')
 
 def order_success(request):
     return render(request, 'order_success.html')

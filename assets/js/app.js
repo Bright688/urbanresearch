@@ -484,6 +484,8 @@ $(document).ready(function(){
     const currencySelect = document.getElementById('id_currency');
     const termsCheckbox = document.getElementById('termsCheckbox');
     const submitButton = document.getElementById('submitButton');
+     
+     
 
     async function fetchSubservices(service) {
         const response = await fetch(`/get-subservices/?service=${service}`);
@@ -507,95 +509,216 @@ $(document).ready(function(){
         deadlineDaysInput.value = Math.max(diffDays, 0);
     }
 
-    function calculateTotalPrice() {
-        // Implement pricing calculation logic
-    }
-
-    serviceSelect.addEventListener('change', function() {
-        fetchSubservices(serviceSelect.value);
-        calculateTotalPrice();
-    });
-
-    numPagesInput.addEventListener('input', calculateTotalPrice);
-    deadlineDateInput.addEventListener('change', function() {
-        updateDeadlineDays();
-        calculateTotalPrice();
-    });
-    currencySelect.addEventListener('change', calculateTotalPrice);
-
     termsCheckbox.addEventListener('change', function() {
         submitButton.disabled = !termsCheckbox.checked;
     });
 
     // Initialize
     fetchSubservices(serviceSelect.value);
-    calculateTotalPrice();
 
-    const paymentMethodField = document.querySelector('[name="payment_method"]');
-    const creditCardSection = document.getElementById('credit-card-section');
-    const cryptoSection = document.getElementById('crypto-section');
+    $(document).ready(function(){
+        // Function to update the subservice dropdown
+        function updateSubserviceDropdown() {
+            const serviceSelect = document.getElementById('id_service');
+            const subserviceSelect = document.getElementById('id_sub_service');
+            const selectedService = serviceSelect.value;
 
-    function togglePaymentFields() {
-        const selectedPaymentMethod = paymentMethodField.value;
-        if (selectedPaymentMethod === 'creditcard') {
-            creditCardSection.style.display = 'block';
-            cryptoSection.style.display = 'none';
-        } else if (selectedPaymentMethod === 'crypto') {
-            creditCardSection.style.display = 'none';
-            cryptoSection.style.display = 'block';
-        } else {
-            creditCardSection.style.display = 'none';
-            cryptoSection.style.display = 'none';
+            // Clear out any existing options in the subservice dropdown
+            subserviceSelect.innerHTML = '<option value="">Select a sub-service</option>';
+
+            // If a service is selected and it has subcategories, populate subservice dropdown
+            if (selectedService && servicePrices[selectedService]) {
+                const subcategories = servicePrices[selectedService].subcategories;
+
+                // Loop through subcategories and add options to subservice dropdown
+                for (const subcategory in subcategories) {
+                    const option = document.createElement('option');
+                    option.value = subcategory;
+                    option.textContent = subcategory.replace(/_/g, ' '); // Replace underscores with spaces for display
+                    subserviceSelect.appendChild(option);
+                }
+            }
         }
+
+        // Add event listener to the service dropdown to trigger subservice update
+        document.getElementById('id_service').addEventListener('change', updateSubserviceDropdown);
+
+        // Ensure subservices are updated on page load if a service is already selected
+        window.addEventListener('load', updateSubserviceDropdown);
+        
+    });
+
+    $(document).ready(function () {
+        const serviceElement = document.getElementById('id_service');
+        const subServiceElement = document.getElementById('id_sub_service');
+        const numPagesElement = document.getElementById('id_num_pages');
+        const currencyElement = document.getElementById('id_currency');
+        
+        const calculatedPriceElement = document.getElementById('calculatedPrice');
+        const submitButton = document.getElementById('submitButton');
+        const form = document.getElementById('orderForm');
+        const termsCheckbox = document.getElementById('termsCheckbox');
+         
+        const deadlineInput = document.getElementById('id_deadline_date');
+        const deadlineDaysField = document.getElementById('id_deadline_days'); // Hidden field for deadline days
+        const displayDeadlineDays = document.getElementById('displayDeadlineDays'); // Visible field for showing the days
+    
+        // Function to calculate the difference in days between two dates
+        function calculateDeadlineDays(selectedDate) {
+            const currentDate = new Date(); // Current date
+            const selected = new Date(selectedDate); // Selected deadline date
+    
+            // Calculate the difference in time
+            const timeDiff = selected.getTime() - currentDate.getTime();
+    
+            // Convert time difference from milliseconds to days (rounding up)
+            const diffInDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            
+            return diffInDays > 0 ? diffInDays : 1; // Minimum of 1 day if past
+            
+        }
+
+    
+        // Function to update both the deadline days field and the visible display
+        function updateDeadlineDays() {
+            const selectedDate = deadlineInput.value;
+    
+            if (selectedDate) {
+                var days = calculateDeadlineDays(selectedDate);
+                
+                deadlineDaysField.value = days;  // Update the hidden field (form)
+                displayDeadlineDays.textContent = days;  // Update the visible span
+                calculatePrice(days)
+            }
+        }
+
+        
+
+        // Calculate price based on selected service, sub-service, and number of pages
+        function calculatePrice(days) {
+            const service = serviceElement.value;
+            const subService = subServiceElement.value;
+            const numPages = parseInt(numPagesElement.value) || 0;
+            const deadlineDate = new Date(document.getElementById('id_deadline_date').value);
+            currency = currencyElement.value;
+            // Default price to 0 if no valid service or sub-service is selected
+            let pricePerPage = 0;
+
+            // Check if the service exists in the servicePrices object
+            if (service && servicePrices[service]) {
+                // Check if a sub-service is selected and exists under the service
+                if (subService && servicePrices[service].subcategories[subService]) {
+                    // Use sub-service specific price
+                    pricePerPage = servicePrices[service].subcategories[subService].pricePerPage;
+                } else {
+                    // Fallback to the base service price if no sub-service price is found
+                    pricePerPage = servicePrices[service].pricePerPage;
+                }
+            }
+
+
+            let deadline_adjustment = 1
+            if (days <= 3){
+               deadline_adjustment = 1.7
+            }
+            else if (days<=6){
+               deadline_adjustment = 1.5
+            }
+                
+            else if (days <= 9){
+               deadline_adjustment = 1.15
+            }
+            
+            
+            // Calculate the total price based on the price per page and the number of pages
+            let totalPrice = pricePerPage * numPages * deadline_adjustment;
+
+            // Convert to selected currency
+            let convertedPrice = totalPrice * exchangeRates[currency];
+
+            // Handle NaN or invalid conversion result
+            if (isNaN(convertedPrice)) {
+                convertedPrice = 0; // Fallback to 0 if conversion fails
+            }
+            
+            calculatedPriceElement.innerText = `${currencySymbols[currency]}${convertedPrice.toFixed(2)}`; // Update the text content
+            
+        }
+
+        $(document).ready(function () {
+            
+            // Add event listeners
+            serviceElement.addEventListener('change', function() { updateDeadlineDays(); });
+            subServiceElement.addEventListener('change', function() { updateDeadlineDays(); });
+            numPagesElement.addEventListener('input', function() { updateDeadlineDays(); });
+            
+            // Listen for changes in the currency field
+            currencyElement.addEventListener('change', function() { updateDeadlineDays(); });
+            
+            // Listen for changes in the deadline date field
+            deadlineInput.addEventListener('change', function() {
+                updateDeadlineDays(); // Call the update function when the date changes
+            });
+            
+            calculatePrice(days)
+            
+            // Initialize exchange rates
+            fetchExchangeRates();
+        });
+        
+        
+
+        // Validate if terms are agreed and all fields are filled
+        function validateForm() {
+            if (termsCheckbox.checked && serviceElement.value && subServiceElement.value && numPagesElement.value) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+    
+        // Attach event listeners for validation
+        serviceElement.addEventListener('change', validateForm);
+        subServiceElement.addEventListener('change', validateForm);
+        numPagesElement.addEventListener('input', validateForm);
+        termsCheckbox.addEventListener('change', validateForm);
+    
+        
+    });
+
+});
+
+$(document).ready(function () {
+    const form = document.getElementById('orderForm');
+    const submitButton = document.getElementById('submitButton');
+    const paymentMethodSelect = document.querySelector('select[name="payment_method"]');
+    const termsCheckbox = document.getElementById('termsCheckbox');
+    console.log(form)
+    // Function to check if a payment method is selected and terms checkbox is checked
+    function checkFormValidity() {
+        const paymentMethodSelected = paymentMethodSelect.value !== '';
+        const termsAccepted = termsCheckbox.checked;
+
+        // Enable submit button if both payment method is selected and terms checkbox is checked
+        submitButton.disabled = !(paymentMethodSelected && termsAccepted);
     }
 
-    // Initial display based on the current payment method
-    togglePaymentFields();
+    // Listen for changes in payment method dropdown and terms checkbox
+    paymentMethodSelect.addEventListener('change', checkFormValidity);
+    termsCheckbox.addEventListener('change', checkFormValidity);
 
-    // Add event listener to handle changes in payment method
-    paymentMethodField.addEventListener('change', togglePaymentFields);
-
-    // Function to submit the form data
-    function submitForm(event) {
-    const form = document.querySelector('form');
-    
-    document.querySelector('form').addEventListener('submit', function (event) {
-        // Prevent the form from submitting the default way
-        event.preventDefault();
-    
-        const service = document.querySelector('#service').value;
-        const subService = document.querySelector('#sub_service').value;
-        const numPages = parseInt(document.querySelector('#num_pages').value);
-        const deadlineDate = document.querySelector('#deadline_date').value;
-        const selectedCurrency = document.querySelector('#currency').value;
-    
-        // If all fields are filled, submit the form data via POST
-        if (service && subService && numPages > 0 && deadlineDate && selectedCurrency) {
-            // Construct a formData object to send the data
-            const formData = new FormData();
-            formData.append('service', service);
-            formData.append('sub_service', subService);
-            formData.append('num_pages', numPages);
-            formData.append('deadline_date', deadlineDate);
-            formData.append('currency', selectedCurrency);
-    
-            // Submit form using fetch or XMLHttpRequest
-            fetch('/submit_form/', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                // Handle success - maybe redirect or show a success message
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-    });
-}
+    // Initial check on page load
+    checkFormValidity();
 });
+
+
+
+
+
+
+
+
 
 
 

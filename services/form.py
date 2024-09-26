@@ -34,7 +34,7 @@ class OrderForm(forms.Form):
             ('Web_contents', 'Web Contents', 10),
             ('Newsletters', 'Newsletters', 10),
             ('Speeches', 'Speeches', 10),
-            ('Technical_documents', 'Technical Documents', 12),
+            ('Technical_documents', 'Technical Documents', 12),      
             ('Grant_proposals', 'Grant Proposals', 12),
         ],
         'thesis_dissertation_support': [
@@ -80,17 +80,55 @@ class OrderForm(forms.Form):
             ('Reflective_essays', 'Reflective Essays', 10),
         ],
     }
+    
+    
 
-    name = forms.CharField(max_length=100, required=True)
-    email = forms.EmailField(required=True)
-    service = forms.ChoiceField(choices=SERVICE_CHOICES, required=True)
-    sub_service = forms.ChoiceField(choices=[], required=True)
-    num_pages = forms.IntegerField(min_value=1, initial=1, required=True)
+    name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    service = forms.ChoiceField(choices=SERVICE_CHOICES, required=True, widget=forms.Select(attrs={'class': 'form-control'}))
+    sub_service = forms.ChoiceField(choices=[('', '---------')], required=True, widget=forms.Select(attrs={'class': 'form-control'}))
+    num_pages = forms.IntegerField(label='Number of Pages', min_value=1, initial=1, required=True, widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    
     deadline_date = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         required=True
     )
-    deadline_days = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+    
+    deadline_days = forms.IntegerField(
+        widget=forms.HiddenInput(),  # Make it a hidden field
+        required=False
+    )
+
+    deadline_days = forms.IntegerField(
+        widget=forms.HiddenInput(),  # Make it a hidden field
+        required=False
+    )
+    
+    
+    description = forms.CharField(
+        label='Description',
+        widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+        required=True
+    )
+    
+    file_upload = forms.FileField(
+        label='Upload File',
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        required=False  # Set to False to make the upload optional
+    )
+
+    
+    PAYMENT_CHOICES = [
+        ('paystack', 'Paystack'),
+        ('crypto', 'Cryptocurrency'),
+    ]
+    
+    payment_method = forms.ChoiceField(
+        choices=PAYMENT_CHOICES, 
+        label='Payment Method', 
+        widget=forms.Select(attrs={'class': 'form-control'})  # Add Bootstrap class for styling
+    )
+
     currency = forms.ChoiceField(choices=[
         ('USD', 'USD'),
         ('EUR', 'EUR'),
@@ -102,37 +140,19 @@ class OrderForm(forms.Form):
         ('NGN', 'NGN'),
     ], required=True)
     exchange_rates = forms.CharField(widget=forms.HiddenInput(), required=False)  # Field to receive exchange rates from JavaScript
-    payment_method = forms.ChoiceField(choices=[
-        ('creditcard', 'Credit Card'),
-        ('crypto', 'Cryptocurrency'),
-    ], required=True)
-    card_number = forms.CharField(max_length=16, required=False)
-    expiry_date = forms.DateField(required=False)
-    cvv = forms.CharField(max_length=4, required=False)
-    crypto_wallet = forms.CharField(max_length=255, required=False)
-    crypto_type = forms.ChoiceField(choices=[
-        ('bitcoin', 'Bitcoin (BTC)'),
-        ('ethereum', 'Ethereum (ETH)'),
-        ('litecoin', 'Litecoin (LTC)'),
-    ], required=False)
+   
     terms = forms.BooleanField(required=True)
     
-    def calculate_price(self, cleaned_data):
-        # Retrieve values from the form
-        service = self.cleaned_data.get('service')
-        sub_service = self.cleaned_data.get('sub_service')
-        num_pages = self.cleaned_data.get('num_pages')
-        deadline_date = self.cleaned_data.get('deadline_date')
-        currency = self.cleaned_data.get('currency')
-        
-        
-       # Base price per page
-        base_price = service_prices.get(service, {}).get(sub_service, 0)
+    
+    '''def calculate_price(self, cleaned_data):
+        service = cleaned_data.get('service')
+        sub_service = cleaned_data.get('sub_service')
+        num_pages = cleaned_data.get('num_pages')
+        deadline_date = cleaned_data.get('deadline_date')
+        currency = cleaned_data.get('currency')
 
-        # Deadline adjustment (example)
-        from datetime import date
-        today = date.today()
-        days_until_deadline = (deadline_date - today).days
+        base_price = self.get_base_price(service, sub_service)
+        days_until_deadline = (deadline_date - date.today()).days
 
         deadline_adjustment = 1
         if days_until_deadline <= 3:
@@ -142,18 +162,22 @@ class OrderForm(forms.Form):
         elif days_until_deadline <= 9:
             deadline_adjustment = 1.15
 
-        # Calculate total price
         total_price = base_price * num_pages * deadline_adjustment
 
-        # Fetch exchange rate from API (using USD as default base)
-        response = requests.get(f'https://v6.exchangerate-api.com/v6/2f58c223c4959e838ccc2c92/latest/USD')
+        response = requests.get('https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/USD')
         exchange_rates = response.json().get('conversion_rates', {})
         conversion_rate = exchange_rates.get(currency, 1)
 
-        # Convert price to selected currency
         final_price = total_price * conversion_rate
 
         return final_price
+
+    def get_base_price(self, service, sub_service):
+        for subservice_list in self.SUBSERVICE_CHOICES.values():
+            for sub in subservice_list:
+                if sub[0] == sub_service:
+                    return sub[2]  # Return the base price associated with the sub-service
+        return 0'''
     
 
 class CommentForm(forms.ModelForm):

@@ -51,15 +51,7 @@ class Order(models.Model):
         ('creditcard', 'Credit Card'),
         ('crypto', 'Cryptocurrency'),
     ])
-    card_number = models.CharField(max_length=16, blank=True, null=True)
-    expiry_date = models.DateField(blank=True, null=True)
-    cvv = models.CharField(max_length=4, blank=True, null=True)
-    crypto_wallet = models.CharField(max_length=100, blank=True, null=True)
-    crypto_type = models.CharField(max_length=20, choices=[
-        ('bitcoin', 'Bitcoin'),
-        ('ethereum', 'Ethereum'),
-        ('litecoin', 'Litecoin'),
-    ], blank=True, null=True)
+    
     terms_accepted = models.BooleanField()
 
     def save(self, *args, **kwargs):

@@ -1,19 +1,126 @@
 {% extends 'base.html' %}
-
-{% block content %}
 {% load static %}
+{% block content %}
 <style>
-        body {
-        background-color: rgb(126, 123, 123);
+    body {
+        background-color: #5f6577;
         font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
-    }   
+    }
+
+    .order-form-container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-form-container h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .order-form-container .form-group {
+        margin-bottom: 20px;
+    }
+
+    .order-form-container label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .order-form-container input, select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .order-form-container input:focus, select:focus, textarea:focus {
+        border-color: #28a745;
+        outline: none;
+        box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+    }
+
+    .order-form-container .form-control-static {
+        font-size: 1.2rem;
+        color: #333;
+        padding: 10px 0;
+    }
+
+    .order-form-container #calculatedPrice {
+        font-weight: bold;
+        color: #28a745;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        border: none;
+    }
+
+    
+
+    .order-form-container .form-group .errorlist {
+        color: red;
+        font-size: 0.875rem;
+        margin-top: 5px;
+    }
+
+    .order-form-container .form-check-input{
+        width: 4% !important;
+        height: 2%;
+    }
+
+    .order-form-container button {
+        width: 100%;
+        padding: 15px;
+        background-color: #28a745;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .order-form-container button:disabled {
+        background-color: #ccc;
+    }
+
+    .order-form-container button:hover:enabled {
+        background-color: #218838;
+    }
+
+    @media (max-width: 768px) {
+        .order-form-container {
+            padding: 20px;
+            margin: 30px auto;
+        }
+
+        .order-form-container h1 {
+            font-size: 1.75rem;
+        }
+
+        .order-form-container button {
+            font-size: 1rem;
+        }
+        
+    }
+    
 </style>
 
 <div class="order-form-container">
-    <h1>Order Form</h1>
-    <form method="post" id="orderForm">
+    <h1>Place Your Order</h1>
+    <form method="post" id="orderForm"  enctype="multipart/form-data">
         {% csrf_token %}
         
         <div class="form-group">
@@ -39,52 +146,47 @@
         <div class="form-group">
             {{ form.deadline_date.label_tag }} {{ form.deadline_date }}
         </div>
+
+        <div class="form-group">
+            {{ form.deadline_days }}
+        </div>
+
+        <div class="form-group">
+            <label>Deadline Days: <span id="displayDeadlineDays">1</span></label>
+        </div>
         
         <div class="form-group">
             {{ form.currency.label_tag }} {{ form.currency }}
         </div>
         
         <div class="form-group">
-            {{ form.payment_method.label_tag }} {{ form.payment_method }}
+            <label for="calculatedPrice">Total Price:</label>
+            <p id="calculatedPrice" class="form-control-static">0.00</p>
         </div>
-        
-        <!-- Credit Card Payment Fields -->
-        <div id="credit-card-section" style="display: none;">
-            <div class="form-group">
-                {{ form.card_number.label_tag }} {{ form.card_number }}
-            </div>
-            
-            <div class="form-group">
-                {{ form.expiry_date.label_tag }} {{ form.expiry_date }}
-            </div>
-            
-            <div class="form-group">
-                {{ form.cvv.label_tag }} {{ form.cvv }}
-            </div>
-        </div>
-        
-        <!-- Cryptocurrency Payment Fields -->
-        <div id="crypto-section" style="display: none;">
-            <div class="form-group">
-                {{ form.crypto_wallet.label_tag }} {{ form.crypto_wallet }}
-            </div>
-            
-            <div class="form-group">
-                {{ form.crypto_type.label_tag }} {{ form.crypto_type }}
-            </div>
-        </div>
-        
+
         <div class="form-group">
-            <label for="totalPrice">Total Price</label>
-            <p id="totalPrice" class="form-control-static">0.00</p>
+            {{ form.description.label_tag }} {{ form.description }}
         </div>
-        
+
         <div class="form-group">
-            <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
-            <label for="termsCheckbox">I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a></label>
+            {{ form.file_upload.label_tag }} {{ form.file_upload }}
         </div>
-        
-        <button type="submit" id="submitButton" class="btn btn-primary" disabled>Submit Order</button>
+
+
+        <div class="form-group">
+            <label for="payment_method">Payment Method:</label>
+            {{ form.payment_method }}
+        </div>
+
+        <div class="form-group d-flex align-items-center mx-3">
+            <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required class="form-check-input mr-2 mb-2"> 
+            <label for="termsCheckbox" class="form-check-label mx-3">
+                I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a>
+            </label>
+        </div>
+            
+        <!-- Submit button initially disabled -->
+        <button type="submit" id="submitButton" class="btn btn-primary" disabled>Proceed to Payment</button>
     </form>
 </div>
 
