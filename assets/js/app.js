@@ -694,7 +694,7 @@ $(document).ready(function () {
     const submitButton = document.getElementById('submitButton');
     const paymentMethodSelect = document.querySelector('select[name="payment_method"]');
     const termsCheckbox = document.getElementById('termsCheckbox');
-    console.log(form)
+
     // Function to check if a payment method is selected and terms checkbox is checked
     function checkFormValidity() {
         const paymentMethodSelected = paymentMethodSelect.value !== '';
@@ -710,8 +710,23 @@ $(document).ready(function () {
 
     // Initial check on page load
     checkFormValidity();
-});
 
+    // Handle form submission
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent default submission
+        if (!submitButton.disabled) {
+            // Determine the payment method selected
+            const selectedPaymentMethod = paymentMethodSelect.value;
+
+            // Redirect based on the selected payment method
+            if (selectedPaymentMethod === 'paystack') {
+                window.location.href = '/order/proceed-to-payment/paystack'; // Redirect to Paystack
+            } else if (selectedPaymentMethod === 'crypto') {
+                window.location.href = '/order/proceed-to-payment/crypto'; // Redirect to Cryptocurrency
+            }
+        }
+    });
+});
 
 
 

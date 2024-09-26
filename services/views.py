@@ -97,12 +97,12 @@ def order_form(request):
             if payment_method == 'paystack':
                 return redirect('paystack_payment_view')  # Redirect to Paystack payment view
             elif payment_method == 'crypto':
-                return redirect('crypto_payment_view')  # Redirect to crypto payment view
-        
-        # If form is invalid, render the form again with errors
-        return render(request, 'order_form.html', {'form': form})
+                return redirect('crypto_payment_view')  # Redirect to Crypto payment view
+        else:
+            # If the form is invalid, render the form with error messages
+            return render(request, 'payment_error.html', {'form': form})
     
-    # For GET requests, initialize an empty form
+    # Render form for GET requests
     form = OrderForm()
     return render(request, 'order_form.html', {'form': form})
    

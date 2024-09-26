@@ -23,10 +23,10 @@ urlpatterns = [
     path('blog/<int:blog_id>/downvote/', downvote_blog, name='downvote_blog'),
     path('order/', order_form, name='order_form'),
     path('get-subservices/', get_subservices, name='get_subservices'),
-    path('proceed-to-payment/paystack/', paystack_payment_view, name='paystack_payment_view'),
-    path('proceed-to-payment/crypto/', crypto_payment_view, name='crypto_payment_view'),
-    path('proceed-to-payment/payment_error_view/', payment_error_view, name='payment_error'),
+    path('order/proceed-to-payment/paystack/', paystack_payment_view, name='paystack_payment_view'),
+    path('order/proceed-to-payment/crypto/', crypto_payment_view, name='crypto_payment_view'),
+    path('order/payment_error/', payment_error_view, name='payment_error'),
    
-   
+    
 ]
 
