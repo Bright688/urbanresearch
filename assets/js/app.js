@@ -635,7 +635,7 @@ $(document).ready(function(){
             let totalPrice = pricePerPage * numPages * deadline_adjustment;
 
             // Convert to selected currency
-            let convertedPrice = totalPrice * exchangeRates[currency];
+            var convertedPrice = totalPrice * exchangeRates[currency];
 
             // Handle NaN or invalid conversion result
             if (isNaN(convertedPrice)) {
@@ -644,10 +644,11 @@ $(document).ready(function(){
             
             calculatedPriceElement.innerText = `${currencySymbols[currency]}${convertedPrice.toFixed(2)}`; // Update the text content
             
+            payment(convertedPrice);
         }
 
         $(document).ready(function () {
-            
+
             // Add event listeners
             serviceElement.addEventListener('change', function() { updateDeadlineDays(); });
             subServiceElement.addEventListener('change', function() { updateDeadlineDays(); });
@@ -668,64 +669,92 @@ $(document).ready(function(){
         });
         
         
-
-        // Validate if terms are agreed and all fields are filled
-        function validateForm() {
-            if (termsCheckbox.checked && serviceElement.value && subServiceElement.value && numPagesElement.value) {
-                submitButton.disabled = false;
-            } else {
-                submitButton.disabled = true;
-            }
-        }
-    
-        // Attach event listeners for validation
-        serviceElement.addEventListener('change', validateForm);
-        subServiceElement.addEventListener('change', validateForm);
-        numPagesElement.addEventListener('input', validateForm);
-        termsCheckbox.addEventListener('change', validateForm);
     
         
+        function payment(totalprice){
+            const form = document.getElementById('orderForm');
+            const submitButton = document.getElementById('submitButton');
+            const paymentMethodSelect = document.querySelector('select[name="payment_method"]');
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            // Select the total price element
+            const totalPriceElement = document.getElementById('calculatedPrice'); // Correctly reference the total price element
+            const currencyElement = document.getElementById('id_currency').value; // Get selected currency
+
+            // Function to check if a payment method is selected and terms checkbox is checked
+            function checkFormValidity() {
+                const paymentMethodSelected = paymentMethodSelect.value !== '';
+                const termsAccepted = termsCheckbox.checked;
+        
+                // Enable submit button if both payment method is selected and terms checkbox is checked
+                submitButton.disabled = !(paymentMethodSelected && termsAccepted);
+            }
+        
+            // Listen for changes in payment method dropdown and terms checkbox
+            paymentMethodSelect.addEventListener('change', checkFormValidity);
+            termsCheckbox.addEventListener('change', checkFormValidity);
+        
+            // Initial check on page load
+            checkFormValidity();
+
+            
+            // Remove any non-numeric characters and get the numerical value of the total price
+            let totalAmount = parseFloat(totalPriceElement.innerText.replace(/[^0-9.-]+/g,""));
+
+            if (isNaN(totalAmount)) {
+                alert("Unable to retrieve total amount. Please check the form.");
+                return;
+            }
+
+            // Convert the totalAmount to the smallest unit for the selected currency
+            if (currencyElement === 'NGN') {
+                totalAmount = Math.round(totalAmount * 100); // Convert to kobo for NGN
+            } else {
+                // Keep the amount as-is for currencies where Paystack does not require conversion to the smallest unit
+                totalAmount = Math.round(totalAmount);
+            }
+            // Handle form submission
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent default submission
+                if (!submitButton.disabled) {
+                    // Determine the payment method selected
+                    const selectedPaymentMethod = paymentMethodSelect.value;
+        
+                    // Redirect based on the selected payment method
+                    if (selectedPaymentMethod === 'paystack') {
+                        // Redirect based on the selected payment method
+                        if (selectedPaymentMethod === 'paystack') {
+                            // Calculate price and initiate Paystack
+                            const email = document.getElementsByName("email")[0].value;
+                            
+                            let handler = PaystackPop.setup({
+                                key: 'pk_test_47eb4974bbc5b6b27486fe4030560c501e1811c9',  // Use the Paystack public key from context
+                                email: email,
+                                amount: totalAmount,  // Amount in kobo
+                                currency: currencyElement,
+                                callback: function(response) {
+                                    // Handle response and redirect to a verification URL with the reference
+                                    window.location.href = "/payment/verify?reference=" + response.reference;
+                                },
+                                onClose: function() {
+                                    alert('Transaction was not completed, window closed.');
+                                }
+                            });
+                            handler.openIframe();  // Open Paystack payment modal
+                        } else if (selectedPaymentMethod === 'crypto') {
+                            window.location.href = '/order/proceed-to-payment/crypto'; // Redirect to Cryptocurrency
+                        }
+                    } else if (selectedPaymentMethod === 'crypto') {
+                        window.location.href = '/order/proceed-to-payment/crypto'; // Redirect to Cryptocurrency
+                    }
+                }
+            });
+        }
     });
 
 });
 
 $(document).ready(function () {
-    const form = document.getElementById('orderForm');
-    const submitButton = document.getElementById('submitButton');
-    const paymentMethodSelect = document.querySelector('select[name="payment_method"]');
-    const termsCheckbox = document.getElementById('termsCheckbox');
-
-    // Function to check if a payment method is selected and terms checkbox is checked
-    function checkFormValidity() {
-        const paymentMethodSelected = paymentMethodSelect.value !== '';
-        const termsAccepted = termsCheckbox.checked;
-
-        // Enable submit button if both payment method is selected and terms checkbox is checked
-        submitButton.disabled = !(paymentMethodSelected && termsAccepted);
-    }
-
-    // Listen for changes in payment method dropdown and terms checkbox
-    paymentMethodSelect.addEventListener('change', checkFormValidity);
-    termsCheckbox.addEventListener('change', checkFormValidity);
-
-    // Initial check on page load
-    checkFormValidity();
-
-    // Handle form submission
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent default submission
-        if (!submitButton.disabled) {
-            // Determine the payment method selected
-            const selectedPaymentMethod = paymentMethodSelect.value;
-
-            // Redirect based on the selected payment method
-            if (selectedPaymentMethod === 'paystack') {
-                window.location.href = '/order/proceed-to-payment/paystack'; // Redirect to Paystack
-            } else if (selectedPaymentMethod === 'crypto') {
-                window.location.href = '/order/proceed-to-payment/crypto'; // Redirect to Cryptocurrency
-            }
-        }
-    });
+    
 });
 
 

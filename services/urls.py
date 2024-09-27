@@ -1,5 +1,5 @@
 from django.urls import path
-from services.views import service_details, order_form, get_subservices, home, about, myservices, blog_list, blog_detail, upvote_blog, downvote_blog, contactus, contact_thanks, order_success, pricing, guarantee, privacy_policy, assignment_assistance, academic_essay, academic_coursework, thesis_and_dissertation, personalised_writing, professional_report_assistance, paystack_payment_view, crypto_payment_view, payment_error_view
+from services.views import service_details, order_form, get_subservices, home, about, myservices, blog_list, blog_detail, upvote_blog, downvote_blog, contactus, contact_thanks, order_success, pricing, guarantee, privacy_policy, assignment_assistance, academic_essay, academic_coursework, thesis_and_dissertation, personalised_writing, professional_report_assistance, paystack_payment_view, crypto_payment_view, verify_payment
 urlpatterns = [
     
     path('', home, name='home'),
@@ -23,10 +23,9 @@ urlpatterns = [
     path('blog/<int:blog_id>/downvote/', downvote_blog, name='downvote_blog'),
     path('order/', order_form, name='order_form'),
     path('get-subservices/', get_subservices, name='get_subservices'),
-    path('order/proceed-to-payment/paystack/', paystack_payment_view, name='paystack_payment_view'),
-    path('order/proceed-to-payment/crypto/', crypto_payment_view, name='crypto_payment_view'),
-    path('order/payment_error/', payment_error_view, name='payment_error'),
-   
+    path('payment/verify/', verify_payment, name='verify_payment'),
+
+    
     
 ]
 

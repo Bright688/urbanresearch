@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <h1>Payment Failed</h1>
+    
+    <p>Unfortunately, there was an issue processing your payment. Please try again later or contact support for assistance.</p>
+    
+    <a href="/order/" class="btn btn-danger">Go Back to Orders</a>
+</div>
+
+{% endblock %}

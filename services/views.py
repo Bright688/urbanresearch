@@ -100,46 +100,30 @@ def order_form(request):
                 return redirect('crypto_payment_view')  # Redirect to Crypto payment view
         else:
             # If the form is invalid, render the form with error messages
-            return render(request, 'payment_error.html', {'form': form})
+            return render(request, 'order_form.html', {'form': form})
     
     # Render form for GET requests
     form = OrderForm()
     return render(request, 'order_form.html', {'form': form})
-   
-
+  
 # Paystack payment view
 def paystack_payment_view(request):
     if request.method == 'POST':
         # Ensure the user is authenticated or use a provided email
         user_email = request.user.email if request.user.is_authenticated else request.POST.get('email')
 
-        paystack_secret_key = settings.PAYSTACK_SECRET_KEY
-        headers = {
-            'Authorization': f'Bearer {paystack_secret_key}',
-            'Content-Type': 'application/json'
-        }
-        
-        # Generate the payment data
+        # Get the amount from the form submission
+        amount = request.POST.get('amount')  # Ensure you get this from your form or calculate as needed
+
+        # Prepare the payment data (you may not need to initialize it if using the modal)
         payment_data = {
-            'email': user_email,  # User's email
-            'amount': 1000 * 100,  # Amount in kobo (Naira is multiplied by 100)
+            'email': user_email,
+            'amount': int(amount),
             'callback_url': request.build_absolute_uri('/payment/callback/')  # URL to handle the callback
         }
-        
-        # Send payment request to Paystack
-        response = requests.post('https://api.paystack.co/transaction/initialize', json=payment_data, headers=headers)
-        response_data = response.json()
-        
-        # Redirect to Paystack payment page
-        if response_data['status']:
-            payment_url = response_data['data']['authorization_url']
-            return redirect(payment_url)
-        else:
-            # Handle the error
-            return redirect('payment_error_view')  # Redirect to an error view if payment fails
 
-    return render(request, 'paystack_payment.html')  # Render payment template for GET requests
-    
+    return render(request, 'paystack_payment.html')
+
 # Crypto payment view
 def crypto_payment_view(request):
     if request.method == 'POST':
@@ -178,10 +162,61 @@ def crypto_payment_view(request):
             return redirect('payment_error_view')  # Redirect to error view if request fails
 
     return render(request, 'crypto_payment.html')  # Render payment template for GET requests
-    
-def payment_error_view(request):
-    return render(request, 'payment_error.html')
+  
+def verify_payment(request):
+    # Get the reference from the URL
+    reference = request.GET.get('reference')
 
+    if reference:
+        # Call Paystack API to verify the payment
+        headers = {
+            'Authorization': f'Bearer {settings.PAYSTACK_SECRET_KEY}',  # Use your Paystack secret key
+        }
+        url = f"https://api.paystack.co/transaction/verify/{reference}"
+        
+        try:
+            response = requests.get(url, headers=headers)
+            result = response.json()
+
+            if response.status_code == 200:  # Check if the API call was successful
+                if result.get('status'):  # Check if verification was successful
+                    transaction_data = result['data']  # Get transaction data
+                    
+                    # Extract key details
+                    amount = transaction_data['amount'] / 100  # Convert from kobo to NGN
+                    status = transaction_data['status']
+                    email = transaction_data['customer']['email']
+                    transaction_date = transaction_data['paid_at']  # Getting the transaction date
+
+                    if status == 'success':
+                        # You can update your database here, e.g., update order status
+                        # Assuming you have a model for orders:
+                        # order = Order.objects.get(reference=reference)
+                        # order.status = 'Paid'
+                        # order.amount = amount
+                        # order.save()
+
+                        # Redirect to a success page or show a success message
+                        return render(request, 'payment_success.html', {
+                            'amount': amount,
+                            'email': email,
+                            'status': status,
+                            'transaction_date': transaction_date,
+                            'reference': reference  # Pass the reference as well
+                        })
+                    else:
+                        # If payment was not successful, show an error
+                        return render(request, 'payment_failure.html', {'message': 'Payment failed'})
+                else:
+                    return render(request, 'payment_failure.html', {'message': 'Verification failed'})
+            else:
+                return render(request, 'payment_failure.html', {'message': 'Error contacting Paystack'})
+
+        except requests.exceptions.RequestException as e:
+            # Handle request exceptions
+            return render(request, 'payment_failure.html', {'message': 'Request error: ' + str(e)})
+    else:
+        return render(request, 'payment_failure.html', {'message': 'No reference provided'})
 def order_success(request):
     return render(request, 'order_success.html')
 
